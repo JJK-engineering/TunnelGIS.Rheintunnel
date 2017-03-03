@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="Beipackzettel.xslt"?>
+<aggregatedDelivery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<datasets>
+		<dataset name="e:\arcgisserver\directories\arcgisjobs\swissproductderivations\swissalti3d_gpserver\jfe3865d645c3461c95f7637534053363\scratch\Data">
+			<deliveries>
+				<delivery>
+					<terrain name="TLM_DTM_TERRAIN "/>
+					<terrainSpatialReference name="CH1903+_LV95"/>
+					<terrain_linear_unit name="Meter"/>
+					<extentAsString name="2610127.0 1265139.0 2615467.0 1270039.0"/>
+					<output_raster_format name="tiff"/>
+					<cellsize name="5"/>
+					<interpolation_method name="Linear"/>
+					<exportedRasterStatistics number="1" size="4.5019"/>
+					<exportedRasters>
+						<exportedRaster name="swissALTI3D_.tif" size="4.5019"/>
+					</exportedRasters>
+				</delivery>
+			</deliveries>
+		</dataset>
+	</datasets>
+</aggregatedDelivery>

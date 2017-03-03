@@ -1,0 +1,36 @@
+#,TRAVERSE PC
+# Full Version number,17.0.1.0 (01302017)
+999,begin
+80,17.0
+#,SURVEY
+82,67108864
+83,2
+86,Un-Assigned,0,0
+86,Alignments,1,0
+86,As-Builts,2,0
+86,Boundaries,3,0
+86,Computations,4,0
+86,Control,5,0
+86,Deeds,6,0
+86,Easements,7,0
+86,Features,8,0
+86,GPS,9,0
+86,Imported,10,0
+86,Lots,11,0
+86,Point Codes,12,0
+86,Research,13,0
+86,Setbacks,14,0
+86,Stakeout,15,0
+86,Topo,16,0
+93,1,0,0,0,0
+94,15.00,10.00,10.00
+101,
+102,27-2-2017
+103,1
+104,0
+105,0
+106,61
+#,POINTS
+95,0
+#,LINES
+999,end
