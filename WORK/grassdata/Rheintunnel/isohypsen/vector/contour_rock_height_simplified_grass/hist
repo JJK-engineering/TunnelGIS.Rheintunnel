@@ -1,0 +1,7 @@
+COMMAND: v.in.dxf -e input="/home/kaelin_joseph/Downloads/20160606_contour_rock_heights2_simplified.dxf" output="contour_rock_height_simplified_grass"
+GISDBASE: /home/kaelin_joseph/Downloads/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Sat Feb 25 19:29:18 2017
+---------------------------------------------------------------------------------
+COMMAND: QGIS --quiet
+GISDBASE: /home/kaelin_joseph/Downloads/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Sat Feb 25 18:14:29 2017
