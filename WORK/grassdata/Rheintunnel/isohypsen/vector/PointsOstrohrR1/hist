@@ -1,0 +1,7 @@
+COMMAND: v.in.ogr --overwrite -o input="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1.shp" output="OstrohrR1" min_area=0.0001 snap=-1
+GISDBASE: /home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Fri Mar 17 18:08:22 2017
+---------------------------------------------------------------------------------
+COMMAND: v.to.points input="OstrohrR1@isohypsen" layer="1" type="line" output="PointsOstrohrR1" use="vertex" dmax=2
+GISDBASE: /home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Fri Mar 17 18:19:35 2017

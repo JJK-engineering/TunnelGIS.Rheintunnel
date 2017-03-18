@@ -1,0 +1,56 @@
+
+# bash environmental variables
+#export PYTHONPATH=/usr/share/qgis/python/
+#export LD_LIBRARY_PATH=/usr/share/qgis/python/
+#export DISPLAY=:1.0 
+
+
+import sys
+from qgis.core import *
+# need qgis,gui ?
+#from qgis.gui import *
+# need PyQt4.QtCore ?
+#from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+
+# what does True refer to below ? 
+app = QApplication([], True)
+QgsApplication.setPrefixPath("/usr", True)
+#correct?
+#QgsApplication.setPrefixPath(qgis_path, True)
+QgsApplication.initQgis()
+
+sys.path.append('/usr/share/qgis/python/plugins') 
+from processing.core.Processing import Processing
+Processing.initialize()
+from processing.tools import *
+
+#why is this still needed
+import processing
+
+
+Tunnel = QgsVectorLayer("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1.shp","OstrohrLine","ogr")
+QgsMapLayerRegistry.instance().addMapLayer(Tunnel)
+
+if line.isValid():
+    print "Layer %s did load" % line.name()
+
+#from processing.core.SilentProgress import SilentProgress
+#progress = SilentProgress()
+
+#processing.runandload("grass:v.to.points",line,"2",False,False,True,"2603510,2624270,1260650,1274890",-1,0.0001,0,None)
+#Error in sys.excepthook:
+#Traceback (most recent call last):
+#  File "/usr/lib/python2.7/dist-packages/qgis/utils.py", line 196, in qgis_excepthook
+#      showException(type, value, tb, None, messagebar=True)
+#        File "/usr/lib/python2.7/dist-packages/qgis/utils.py", line 107, in showException#
+#	    open_stack_dialog(type, value, tb, msg)
+#	      File "/usr/lib/python2.7/dist-packages/qgis/utils.py", line 142, in open_stack_dialog
+#	          iface.messageBar().popWidget()
+#		  AttributeError: 'NoneType' object has no attribute 'messageBar'
+#Original exception was:
+#Traceback (most recent call last):
+#  File "<stdin>", line 1, in <module>
+#  NameError: name 'processing' is not defined
+
+processing.runandload("grass7:v.to.points",Tunnel,"2",1,True,"2603510,2624270,1260650,1274890",-1,0.0001,0,None)
