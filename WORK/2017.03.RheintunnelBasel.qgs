@@ -1561,9 +1561,9 @@ def my_form_open(dialog, layer, feature):
       <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="-853265664">
         <columns>
           <column width="-1" hidden="0" type="field" name="field_1"/>
-          <column width="-1" hidden="0" type="field" name="Xcoord"/>
-          <column width="-1" hidden="0" type="field" name="Ycoord"/>
-          <column width="-1" hidden="0" type="field" name="Zcoord"/>
+          <column width="128" hidden="0" type="field" name="Xcoord"/>
+          <column width="136" hidden="0" type="field" name="Ycoord"/>
+          <column width="149" hidden="0" type="field" name="Zcoord"/>
           <column width="-1" hidden="0" type="field" name="Felstiefe"/>
           <column width="-1" hidden="0" type="field" name="DTM"/>
           <column width="-1" hidden="0" type="field" name="Felsoberflache"/>
