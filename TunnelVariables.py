@@ -97,6 +97,6 @@ merge_sel.head()
 merge_sel['delta_FelsoberflacheZCoord'] = merge_sel.Felsoberflache - merge_sel.Zcoord
 merge_sel.head()
 
-merge_sel.to_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/TunnelVariables.csv", sep="\t")
+merge_sel.to_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/TunnelVariables.csv", sep=",")
 
 
