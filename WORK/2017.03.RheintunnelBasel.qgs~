@@ -23,7 +23,7 @@
     <layer-tree-layer expanded="0" checked="Qt::Unchecked" id="Felsisohypsen_raster20170304190809023" name="Felsisohypsen-raster">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="0" checked="Qt::Unchecked" id="swissALTI3D_20170303191726931" name="swissALTI3D_">
+    <layer-tree-layer expanded="0" checked="Qt::Checked" id="swissALTI3D_20170303191726931" name="swissALTI3D_">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="0" checked="Qt::Unchecked" id="Stadtplan_schwarz_weiss_5000_1000020170303192248807" name="Stadtplan schwarz-weiss 5000-10000">
@@ -40,10 +40,10 @@
   <mapcanvas>
     <units>meters</units>
     <extent>
-      <xmin>2612005.92849500011652708</xmin>
-      <ymin>1265876.78456249996088445</ymin>
-      <xmax>2614761.95610500033944845</xmax>
-      <ymax>1269404.55513749993406236</ymax>
+      <xmin>2612894.81316465837880969</xmin>
+      <ymin>1268036.78049630671739578</ymin>
+      <xmax>2612968.99951449455693364</xmax>
+      <ymax>1268131.74051088327541947</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -71,7 +71,7 @@
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320213753041"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20170318114411614"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test20170319145009088"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100002" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_20170303191726931"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_20170303191726931"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="tunnel_test20170319145653184"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Point_Felstiefe20170313145756584"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="PointsOstrohrR120170317181938531"/>
@@ -147,9 +147,9 @@
         <legendlayerfile isInOverview="0" layerid="Felsisohypsen_raster20170304190809023" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="swissALTI3D_" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="swissALTI3D_" showFeatureCount="0">
       <filegroup open="false" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="swissALTI3D_20170303191726931" visible="0"/>
+        <legendlayerfile isInOverview="0" layerid="swissALTI3D_20170303191726931" visible="1"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Stadtplan schwarz-weiss 5000-10000" showFeatureCount="0">
@@ -1631,12 +1631,12 @@ def my_form_open(dialog, layer, feature):
       <layername>swissALTI3D_</layername>
       <srs>
         <spatialrefsys>
-          <proj4>+proj=omerc +lat_0=46.95240555555556 +lonc=7.439583333333333 +alpha=90 +k=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +units=m +no_defs</proj4>
-          <srsid>100002</srsid>
-          <srid>0</srid>
-          <authid>USER:100002</authid>
-          <description> * Generated CRS (+proj=omerc +lat_0=46.95240555555556 +lonc=7.439583333333333 +alpha=90 +k=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +units=m +no_defs)</description>
-          <projectionacronym>omerc</projectionacronym>
+          <proj4>+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>47</srsid>
+          <srid>2056</srid>
+          <authid>EPSG:2056</authid>
+          <description>CH1903+ / LV95</description>
+          <projectionacronym>somerc</projectionacronym>
           <ellipsoidacronym>bessel</ellipsoidacronym>
           <geographicflag>false</geographicflag>
         </spatialrefsys>
@@ -1653,7 +1653,7 @@ def my_form_open(dialog, layer, feature):
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer opacity="0.490196" alphaBand="0" classificationMax="270" classificationMinMaxOrigin="User" band="1" classificationMin="230" type="singlebandpseudocolor">
+        <rasterrenderer opacity="0.490196" alphaBand="-1" classificationMax="270" classificationMinMaxOrigin="User" band="1" classificationMin="230" type="singlebandpseudocolor">
           <rasterTransparency/>
           <rastershader>
             <colorrampshader colorRampType="INTERPOLATED" clip="0">
