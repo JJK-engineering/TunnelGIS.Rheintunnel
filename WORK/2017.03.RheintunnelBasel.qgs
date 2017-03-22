@@ -1158,7 +1158,7 @@ def my_form_open(dialog, layer, feature):
         </spatialrefsys>
       </srs>
       <provider encoding="System">delimitedtext</provider>
-      <previewExpression></previewExpression>
+      <previewExpression>COALESCE( "field_1", '&lt;NULL>' )</previewExpression>
       <vectorjoins/>
       <layerDependencies/>
       <expressionfields/>

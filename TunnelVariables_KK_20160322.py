@@ -21,17 +21,17 @@ OstrohrR1_Felsoberflaeche = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/OstrohrR1
 
 
 # set grass function
-#processing.runalg("grass7:r.what.points",Felstiefe,
-#                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
-#                  -1,0.0001,OstrohrR1_Felstiefe)
-#                          
-#processing.runalg("grass7:r.what.points",DTM,
-#                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
-#                  -1,0.0001,OstrohrR1_DTM)
-#                  
-#processing.runalg("grass7:r.what.points",Felsoberflaeche,
-#                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
-#                  -1,0.0001,OstrohrR1_Felsoberflaeche)
+processing.runalg("grass7:r.what.points",Felstiefe,
+                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
+                  -1,0.0001,OstrohrR1_Felstiefe)
+                          
+processing.runalg("grass7:r.what.points",DTM,
+                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
+                  -1,0.0001,OstrohrR1_DTM)
+                  
+processing.runalg("grass7:r.what.points",Felsoberflaeche,
+                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
+                  -1,0.0001,OstrohrR1_Felsoberflaeche)
 
 # Join results using Panda
 import pandas as pd
