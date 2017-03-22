@@ -125,5 +125,7 @@ for i in range(len(merge_sel.index)-1):
     
 merge_sel.head()
 
-    
+merge_sel.to_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/TunnelVariables2.csv", sep=",")
+
+
 
