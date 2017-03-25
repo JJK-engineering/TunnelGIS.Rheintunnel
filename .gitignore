@@ -1,6 +1,7 @@
 desktop.ini
-*.TRB*
+*.TRA
 *.rtf
-*.~
+*.*~
+\#*\#
 *.BAK
 *.bak
