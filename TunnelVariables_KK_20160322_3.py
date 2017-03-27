@@ -1,59 +1,73 @@
 # routine for grass v.to.points from pyqgis
+#   to analyze GIS data along a tunnel axis
+Tunnel_Line = QgsVectorLayer("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1.shp","OstrohrLine","ogr")
 
-# list attribute names
-features	=	LineTest.getFeatures()
+
+# list attribute names (for checking)
+features	=	Tunnel_Line.getFeatures()
 f	=	features.next()
 [c.name()	for	c	in	f.fields().toList()]
 
-# get grass help
+# get grass help (reference)
 processing.alghelp("grass7:r.what.points")
 
-# Name of imported geographic input files for grass input
+# set name of geographic input files for grass input
+#   data for tunnel axis (e.g. OstrphrR1) must be available as .csv and as .shp
+#   conversion from .csv to .shp should be made here to make sure up-t0-data                          Todo KLK
 Felstiefe = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/Felstiefe.tif"
 DTM = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"
 Felsoberflaeche = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/Felsisohypsen-raster.tif"
-OstrohrR1_csv = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1_csv.shp"
+OstrohrR1 = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1.shp"
 
-# Name of new shapefile for grass output
+# name of files for grass output
 OstrohrR1_Felstiefe = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/OstrohrR1_Felstiefe.csv"
 OstrohrR1_DTM = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/OstrohrR1_DTM.csv"
 OstrohrR1_Felsoberflaeche = "/home/kaelin_joseph/TunnelGIS.Rheintunnel/OstrohrR1_Felsoberflaeche.csv"
 
-
-# set grass function
-processing.runalg("grass7:r.what.points",Felstiefe,
-                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
-                  -1,0.0001,OstrohrR1_Felstiefe)
-                          
+# use grass functions to get raster values for points along axis and write to .csv files
 processing.runalg("grass7:r.what.points",DTM,
-                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
+                  OstrohrR1,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
                   -1,0.0001,OstrohrR1_DTM)
                   
 processing.runalg("grass7:r.what.points",Felsoberflaeche,
-                  OstrohrR1_csv,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
+                  OstrohrR1,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
                   -1,0.0001,OstrohrR1_Felsoberflaeche)
 
-# Join results using Panda
 import pandas as pd
 import numpy as np
+import geopandas as gpd
+import shapely as sp
 
+# convert the csv file to a DataFrame
+data = DataFrame.from_csv('enwest2015_1.csv', index_col=False)
+# extract the geometry from the DataFrame
+points = [Point(row['lon'], row['lat']) for key, row in data.iterrows()]
+#convert the DataFrame to a GeoDataFrame 
+geo_df = GeoDataFrame(data,geometry=points)
+# save the resulting shapefile
+geo_df.to_file('enwest2015_1.shp', driver='ESRI Shapefile')
+
+# join grass results using Panda
 OstrohrR1_csv = pd.read_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/2017-03-19.OstrohrR1.csv")
 OstrohrR1_Felstiefe_csv  = pd.read_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1_Felstiefe.csv")
 OstrohrR1_DTM_csv  = pd.read_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1_DTM.csv")
 OstrohrR1_Felsoberflaeche_csv  = pd.read_csv("/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1_Felsoberflaeche.csv")
 
+# extract the geometry from the DataFrame
+OstrohrR1_spatial = OstrohrR1_csv
+OstrohrR1_spatial_points = [sp.geometry.Point(row['Xcoord'], row['Ycoord']) for key, row in OstrohrR1_spatial.iterrows()]
+OstrohrR1_spatial_points[1]
+#convert the DataFrame to a GeoDataFrame 
+OstrohrR1_spatial = gpd.GeoDataFrame(OstrohrR1_spatial,geometry=OstrohrR1_spatial_points)
+OstrohrR1_spatial.head()
+OstrohrR1_csv.head()
+# save the resulting shapefile
+OstrohrR1_spatial.to_file('/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/OstrohrR1.shp', driver='ESRI Shapefile')
+
+# select attributes to be shown in data frame
 OstrohrR1_csv.head()
 OstrohrR1_csv = OstrohrR1_csv.loc[:,["Xcoord", "Ycoord", "Zcoord"]]
 OstrohrR1_csv.head()
-
-OstrohrR1_Felstiefe_csv.head()
-OstrohrR1_Felstiefe_csv_coleqtmp = [col for col in OstrohrR1_Felstiefe_csv.columns if 'tmp' in col]
-if len(OstrohrR1_Felstiefe_csv_coleqtmp) != 1:
-    print "Rename of Felstiefe attribute did not work properly. Please check"
-    exit()
-OstrohrR1_Felstiefe_csv_rename = OstrohrR1_Felstiefe_csv.rename(columns= {OstrohrR1_Felstiefe_csv_coleqtmp[0]: "Felstiefe"})
-OstrohrR1_Felstiefe_csv_sel = OstrohrR1_Felstiefe_csv_rename.loc[:,["easting", "northing", "Felstiefe"]]
-OstrohrR1_Felstiefe_csv_sel.head()
 
 OstrohrR1_DTM_csv.head()
 OstrohrR1_DTM_csv_coleqtmp = [col for col in OstrohrR1_DTM_csv.columns if 'tmp' in col]
