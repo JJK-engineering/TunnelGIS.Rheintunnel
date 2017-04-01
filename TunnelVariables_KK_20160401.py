@@ -1,5 +1,8 @@
-# get grass help (reference)
-processing.alghelp("grass7:r.what.points")
+#=========================================================================================================================
+# Python Procedure for TunnelGIS
+# Author: KK
+# Date: 01.04.2017
+#=========================================================================================================================
 
 #=========================================================================================================================
 # import library
@@ -46,10 +49,13 @@ Ostrohr_spatial.to_file('TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp', driver='ESRI
 # use grass functions to get raster values for points along tunnel axis and write to .csv files
 # result: Ostrohr_DTM & Ostrohr_Felsoberflaeche
 #=========================================================================================================================
+# get grass help (reference)
+processing.alghelp("grass7:r.what.points")
+# Ostroht_DTM
 processing.runalg("grass7:r.what.points",DTM,
                   Ostrohr_spatial,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
                   -1,0.0001,Ostrohr_DTM)
-                  
+# Ostrohr_Felsoberflaeche                  
 processing.runalg("grass7:r.what.points",Felsoberflaeche,
                   Ostrohr_spatial,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
                   -1,0.0001,Ostrohr_Felsoberflaeche)
@@ -140,7 +146,7 @@ merge_sel.loc[merge_sel['Felsoberflache'] >= merge_sel['Elevation']+ Th/float(2)
 merge_sel.to_csv("TunnelGIS.Rheintunnel/WORK/TunnelVariables_new.csv", sep=",")
 
 #=========================================================================================================================
-# Calculate volume of tunnel between two axis points
+# calculate volume of tunnel between two axis points
 #=========================================================================================================================
 ## prepare "Area1" field
 merge_sel["Area1"] = np.random.randint(0,100, len(merge_sel.index))
