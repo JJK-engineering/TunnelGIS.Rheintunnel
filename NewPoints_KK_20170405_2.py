@@ -32,11 +32,12 @@ Alignment_df
 #Alignment_df["Station_int"].tolist()
 #len(Alignment_df["Station_int"].tolist())
 
-n =  209508
+n =  209510
 if n in Alignment_df["Station_int"].tolist() == True:
     print "exit"
 else:
     ID_sel = int(Alignment_df.loc[n == Alignment_df["Station_int"],'ID'])
+    new_point = Alignment_df.loc[ID_sel == Alignment_df["ID"],]
     neighbour1 = Alignment_df.loc[ID_sel-1 == Alignment_df["ID"],]
     neighbour2 = Alignment_df.loc[ID_sel+1 == Alignment_df["ID"],]
     neighbours1.
