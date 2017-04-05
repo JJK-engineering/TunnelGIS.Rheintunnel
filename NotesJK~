@@ -1,0 +1,5 @@
+try:
+   execfile ("TunnelVariables.JK.py")
+except SystemExit:
+   print "continue"
+ 

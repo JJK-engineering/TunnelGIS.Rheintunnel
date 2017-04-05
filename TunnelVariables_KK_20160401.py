@@ -16,7 +16,8 @@ import os
 #=========================================================================================================================
 # setwd 
 #=========================================================================================================================
-os.chdir =("/home/kaelin_joseph/")
+## os.chdir =("/home/kaelin_joseph/")   !NG  JK
+os.chdir("/home/kaelin_joseph/")
 
 #=========================================================================================================================
 # name of input files
@@ -28,6 +29,7 @@ Ostrohr_csv = "TunnelGIS.Rheintunnel/WORK/OstrohrR2.csv"
 #=========================================================================================================================
 # name of output files
 #=========================================================================================================================Ostrohr_spatial ='TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp'
+#   ! was Ostrohr_spatial intentionally commented out? Note that Ostrohr_spaital is re(defined) below  JK
 Ostrohr_DTM = "TunnelGIS.Rheintunnel/WORK/Ostrohr_DTM.csv"
 Ostrohr_Felsoberflaeche = "TunnelGIS.Rheintunnel/WORK/Ostrohr_Felsoberflaeche.csv"
 
@@ -53,13 +55,17 @@ Ostrohr_spatial.to_file('TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp', driver='ESRI
 processing.alghelp("grass7:r.what.points")
 # Ostroht_DTM
 processing.runalg("grass7:r.what.points",DTM,
-                  Ostrohr_spatial,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
-                  -1,0.0001,Ostrohr_DTM)
+                  'TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp',"NA",",",500, True,False,False,False,False,
+                  "2603510.0,2624270.0,1260650.0,1274890.0",-1,0.0001,Ostrohr_DTM)
+# ERROR: Unable to execute algorithm   Wrong parameter value:   !Due to calling df instead of shp  -fixed JK
 # Ostrohr_Felsoberflaeche                  
 processing.runalg("grass7:r.what.points",Felsoberflaeche,
                   Ostrohr_spatial,"NA",",",500, True,False,False,False,False,"2603510.0,2624270.0,1260650.0,1274890.0",
                   -1,0.0001,Ostrohr_Felsoberflaeche)
-                  
+# ERROR: Unable to execute algorithm   Wrong parameter value:   !Due to calling df instead of shp -NOT FIXED JK
+
+
+exit()
 #=========================================================================================================================
 # join of grass results using panda
 # result: merge_sel
@@ -106,7 +112,7 @@ merge_Ostrohr_DTM= pd.merge(Ostrohr_df, Ostrohr_DTM_df_sel,
                  right_on = ["easting","northing"])
 merge_Ostrohr_DTM.head()
 merge_Ostrohr_DTM.columns
-## join Felsoberfläche to merge_Ostrohr_DTM
+## join Felsoberflaeche to merge_Ostrohr_DTM   !accents not configure  JK
 merge_final = pd.merge(merge_Ostrohr_DTM, Ostrohr_Felsoberflaeche_df_sel, 
                  left_on = ["Easting","Northing"], 
                  right_on = ["easting","northing"])
@@ -131,7 +137,6 @@ merge_sel.head()
 #=========================================================================================================================
 Th = 13 # Tunnel height
 # BC1
-merge_sel.loc[merge_sel['Felsoberflache'] <= merge_sel['Elevation']-float(Th)/float(100)*float(75), 'BoreClass'] = 'BC1'
 # BC2
 merge_sel.loc[(merge_sel['Felsoberflache'] > merge_sel['Elevation']- float(Th)/float(100)*float(75)) & 
               (merge_sel['Felsoberflache'] < merge_sel['Elevation']+ Th/float(2) +1.5), 'BoreClass'] = 'BC2'
