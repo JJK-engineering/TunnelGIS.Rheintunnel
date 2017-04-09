@@ -41,7 +41,7 @@ os.chdir("/home/kaelin_joseph/")
 # define input files
 DTM = "TunnelGIS.Rheintunnel/WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"
 Bedrock_surface = "TunnelGIS.Rheintunnel/WORK/Felsisohypsen-raster.tif"
-Alignment_csv = "TunnelGIS.Rheintunnel/WORK/OstrohrR2.csv"
+Alignment_csv = "TunnelGIS.Rheintunnel/WORK/Ostroehre.AlignmentData.R2.csv"
 
 # define output files
 Alignment_shp ='TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp'

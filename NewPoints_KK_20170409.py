@@ -44,20 +44,22 @@ for n in range(0, len(station_list)):
 n = 209510 # value does not exist in Alignment # value lies between 209508 abd 209511
 #n = 209526 # value exists in Alignment
 
+vicinity = 0.1
+
 station_int_list = Alignment_df["Station_int"].tolist()
 
 if n in station_int_list:
     print "exit"
 else:
     print "smile"
-    max([i for i in station_int_list if i < n])   
-    min([i for i in station_int_list if i > n])    
-
-    station_int_list[station_int_list < n].max()
-    station_int_list[station_int_list > n].min()
+    neighbour1_station_int = max([i for i in station_int_list if i < n]) 
+    neighbour2_station_int = min([i for i in station_int_list if i > n])       
+    if n < neighbour1_station_int + vicinity OR n > neighbour2_station_int + vicinity
+         print "exit"
     
-    ID_sel = int(Alignment_df.loc[n == Alignment_df["Station_int"],'ID'])
-    new_point = Alignment_df.loc[ID_sel == Alignment_df["ID"],]
-    neighbour1 = Alignment_df.loc[ID_sel-1 == Alignment_df["ID"],]
-    neighbour2 = Alignment_df.loc[ID_sel+1 == Alignment_df["ID"],]
-    neighbours1.
+    else:
+    
+    neighbour1 = Alignment_df.loc[Alignment_df["Station_int"] == neighbour1_station_int,]
+    neighbour2 = Alignment_df.loc[Alignment_df["Station_int"] == neighbour2_station_int,]
+
+    

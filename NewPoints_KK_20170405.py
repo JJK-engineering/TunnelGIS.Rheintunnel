@@ -4,7 +4,8 @@ import numpy as np
 
 pd.set_option("display.max_columns",7)
 
-Alignment_csv = "TunnelGIS.Rheintunnel/WORK/OstrohrR2.csv"
+##Alignment_csv = "TunnelGIS.Rheintunnel/WORK/OstrohrR2.csv"
+Alignment_csv = "WORK/OstrohrR2.csv"
 Alignment_df = pd.read_csv(Alignment_csv)
 # Alignment_df.shape
 Alignment_df = Alignment_df.dropna(how = "all")  #delete row if only NA are present in row
@@ -39,4 +40,4 @@ else:
     ID_sel = int(Alignment_df.loc[n == Alignment_df["Station_int"],'ID'])
     neighbour1 = Alignment_df.loc[ID_sel-1 == Alignment_df["ID"],]
     neighbour2 = Alignment_df.loc[ID_sel+1 == Alignment_df["ID"],]
-    neighbours1.
+    neighbour1
