@@ -47,7 +47,7 @@ Alignment_csv = "TunnelGIS.Rheintunnel/WORK/Ostroehre.AlignmentData.R2.csv"
 Alignment_shp ='TunnelGIS.Rheintunnel/WORK/OstrohrR2.shp'
 Alignment_DTM = "TunnelGIS.Rheintunnel/WORK/OstrohrR2_DTM.csv"
 Alignment_Bedrock_surface = "TunnelGIS.Rheintunnel/WORK/OstrohrR2_Bedrock_surface.csv"
-Alignment_Tunnel_variables = "TunnelGIS.Rheintunnel/WORK/OstrohrR2_Tunnel_variables.csv"
+Alignment_Tunnel_variables = "TunnelGIS.Rheintunnel/WORK/Ostroehre.TunnelExcavationData.R2.csv"
 
 
 # create Alignment_spatial from Alignment_csv

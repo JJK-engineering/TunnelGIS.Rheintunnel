@@ -4,7 +4,6 @@
 # call a python script from python interpreter,
 # where script has exit() at point where script should halt execution                                      
 try:
-   execfile ("TunnelVariables.JK.py")
+   execfile ("TunnelExcavationData.JK.py")
 except SystemExit:
    print "continue"
-
