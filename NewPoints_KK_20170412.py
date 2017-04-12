@@ -45,7 +45,7 @@ for n in range(0, len(TunnelLayoutData_Station_list)):
     TunnelLayoutData_df.iloc[n, TunnelLayoutData_df.columns.get_loc("TunnelLayoutData_Station_int")] = station_sel_int # Alignment_df.columns.get_loc("Alignment_Station_int") = 5
 
 # Check if TunnelLayoutData_df["TunnelLayoutData_Station_int"]  exists in  Alignment_df["Alignment_Station_int"] 
-# If it does not exist create a new station
+# If it does not exist create a new station in Alignment_df
 
 TunnelLayoutData_Station_int_list = TunnelLayoutData_df["TunnelLayoutData_Station_int"].tolist()
 Alignment_Station_int_list = Alignment_df["Alignment_Station_int"].tolist()
