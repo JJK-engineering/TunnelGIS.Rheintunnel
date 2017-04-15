@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------------------------------------------
 
 #!/usr/bin/python
-# TunnelVariables.JK.py
+# TunnelExcavationData.py
 
 # Python procedure for TunnelGIS Engineering App
 # Author: KK
@@ -24,6 +24,7 @@
 # "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"   -DEM with surface topography
 # "WORK/Felsisohypsen-raster.tif"                     -DEM with rock surfac
 # "WORK/OstrohrR2.csv"                                -stationed tunnel alignment#
+# "WORK/Ostroehre.TunnelLayoutData.R2.csv"            -tunnel layout data
 
 # References:
 # http://gis.stackexchange.com/questions/197825/how-to-convert-multiple-csv-files-to-shp-using-python-and-no-arcpy
@@ -45,7 +46,7 @@ import os
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# set wd for this procedure                                                      #awkward: fix  ToDo JK
+# set wd for this procedure 
 # ----------------------------------------------------------------------------------------------------------------
 os.chdir("/home/kaelin_joseph/TunnelGIS.Rheintunnel/")
 
@@ -64,16 +65,18 @@ TunnelLayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 # define output files
 # ----------------------------------------------------------------------------------------------------------------
 
-Alignment_shp ='WORK/OstrohrR2.shp'
-Alignment_DTM = "WORK/OstrohrR2_DTM.csv"
-Alignment_Bedrock_surface = "WORK/OstrohrR2_Bedrock_surface.csv"
-Alignment_Tunnel_variables = "WORK/Ostroehre.TunnelExcavationData.R2.csv"
+Alignment_shp ='WORK/Ostrohr.Alignment.R2.shp'
+Alignment_DTM = "WORK/Ostrohr.DTM.R2.csv"
+Alignment_Bedrock_surface = "WORK/Ostrohr.Bedrock_surface.R2.csv"  # JK ToDo: Bedrock_surface?
+Alignment_Tunnel_variables = "WORK/Ostroehre.TunnelExcavationData.R2.csv"  # JK ToDo: cleanup 
+TunnelExcavationData = "WORK/Ostroehre.TunnelExcavationData.R2.csv"
 
 
 # ----------------------------------------------------------------------------------------------------------------
 # create Alignment_df from .csv (dataframe)
-# Important: Before the df is created the data should be checked. EG. make sure that it does not contain trailing 
-# blank lines and that duplicates are deleted
+# Important: Before the df is created the data should be checked.
+#   E.g. make sure that it does not contain trailing blank lines and that duplicates are deleted.
+# result: Alignment_df
 # ----------------------------------------------------------------------------------------------------------------
 
 Alignment_df = pd.read_csv(Alignment_csv)
@@ -82,14 +85,17 @@ Alignment_df = Alignment_df.dropna(how = "all")  #delete row if only NA are pres
 
 # ----------------------------------------------------------------------------------------------------------------
 # create TunnelLayoutData_df from .csv
+# result: TunnelLayoutData_df
 # ----------------------------------------------------------------------------------------------------------------
+
 TunnelLayoutData_df = pd.read_csv(TunnelLayoutData)
 
 
 # ----------------------------------------------------------------------------------------------------------------
 # convert Alignment_df["Station"] => Alignment_df["Alignment_Station_real"] 
-# result: Alignment_df["Alignment_Station_real"]
-print "Alignment_Station_real"
+# result: Alignment_df["Alignment_Station_real"], TunnelLayoutData_Station_list,
+#         TunnelLayoutData_df["TunnelLayoutData_Station_real"]
+print "df Alignment_Station_real"
 # ----------------------------------------------------------------------------------------------------------------
 
 Alignment_Station_list = Alignment_df["Station"].tolist()
@@ -113,7 +119,8 @@ for n in range(0, len(TunnelLayoutData_Station_list)):
     station_sel = TunnelLayoutData_df.iloc[n]["Station"]
     station_sel_int = float(station_sel.replace("+", ""))
     TunnelLayoutData_df.iloc[n, TunnelLayoutData_df.columns.get_loc("TunnelLayoutData_Station_real")] \
-        = station_sel_int  # Alignment_df.columns.get_loc("Alignment_Station_real") = 5
+        = station_sel_int
+    # Alignment_df.columns.get_loc("Alignment_Station_real") = 5
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -198,7 +205,8 @@ Alignment_spatial.to_file(Alignment_shp, driver='ESRI Shapefile')
 
 # ----------------------------------------------------------------------------------------------------------------
 # use grass functions to get raster values for points along tunnel axis and write to .csv files
-# result: Alignment_DTM & Alignment_Bedrock_surface
+# result: Alignment_DTM, Alignment_Bedrock_surface
+print "get raster values"
 # ----------------------------------------------------------------------------------------------------------------
 
 # Alignment_DTM
@@ -340,7 +348,7 @@ for n in range(0, len(TunnelLayoutData_Station_real_list)):
     
 # ----------------------------------------------------------------------------------------------------------------
 # calculate "BoreClass", "SupportClass" and "DisposalClass"
-#   define Tunnel height and BoreClass rules at start of procedure, for easy modification        !ToDo JK
+#   define Tunnel height and BoreClass rules at start of procedure, for easy modification        JK ToDo 
 # result: merge_sel["BoreClass"], merge_sel["SupportClass"], merge_sel["DisposalClass"]
 print 'calculating BoreClass, SupportClass and DisposalClass'
 # ----------------------------------------------------------------------------------------------------------------
@@ -407,7 +415,6 @@ n = 0
 # TunnelLayoutData must show missing data as NaN (None is read as string value)
 for i in range(len(merge_sel.index) -1):
     nn= n+1
-    print(n,nn)
     merge_sel["Distance"].iat[n] = ((merge_sel["Easting"].iat[nn] -merge_sel["Easting"].iat[n])**2 
         +(merge_sel["Northing"].iat[nn] -merge_sel["Northing"].iat[n])**2 
         +(merge_sel["Elevation"].iat[nn] -merge_sel["Elevation"].iat[n])**2 )**(0.5)
