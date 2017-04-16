@@ -360,24 +360,24 @@ merge_sel["DisposalClass"]= np.nan
 tunn_h =13.0   #Tunnel height
 TunnelExcavationData = merge_sel  # JK -temporary until variable name merge_sel replaced with TunnelExcavationData
 
-# define BoreClass as class, to separate definition of methods execution
+# define BoreClass as class, to separate definition of methods from execution
 #   This makes it possible to define the BoreClass methods outside of this routine (e.g. at start of script).
-#   Note that class method is used as a modifier to the TunnelExcavationData (dataframe) class.
+#   Class method is used as a modifier to the TunnelExcavationData (dataframe) class.
 class BoreClass:
     """Determine Bore Class for TBM tunnels"""
-    # BC1
+    # BC1 - tunnel predominantly in soil
     def bc1(self):
         TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & 
         (TunnelExcavationData["Rocksurface"] <= TunnelExcavationData["Elevation"] -tunn_h*0.25),"BoreClass"] \
         ="BC1"
-    # BC2
+    # BC2 - tunnel with mixed face
     def bc2(self):
         TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & 
         (TunnelExcavationData["Rocksurface"] > TunnelExcavationData["Elevation"] -tunn_h*0.25) & 
         (TunnelExcavationData["Rocksurface"] < TunnelExcavationData["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
         = "BC2"
-    # BC3
-    def bc3(self):        
+    # BC3 - tunnel inf rock
+    def bc3(self):
         TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & \
         (TunnelExcavationData["Rocksurface"] >= TunnelExcavationData["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
         = "BC3"
