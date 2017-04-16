@@ -301,11 +301,11 @@ merge_sel = merge_sel.sort(['Alignment_Station_real'], ascending=[1])
 
     
 # ----------------------------------------------------------------------------------------------------------------
-# calculate "delta_rocksurface_tunnelaxis"
-# result: merge_sel['delta_rocksurface_tunnelaxis']
+# calculate difference height rocksurface and tunnel axis
+# result: merge_sel['RockCover']
 # ----------------------------------------------------------------------------------------------------------------
 
-merge_sel['delta_rocksurface_tunnelaxis'] = merge_sel.Rocksurface - merge_sel.Elevation
+merge_sel['RockCover'] = merge_sel.Rocksurface - merge_sel.Elevation
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -357,12 +357,13 @@ merge_sel["BoreClass"]= np.nan
 merge_sel["SupportClass"]= np.nan
 merge_sel["DisposalClass"]= np.nan
 
-tunn_h =13.0   #Tunnel height
-TunnelExcavationData = merge_sel  # JK -temporary until variable name merge_sel replaced with TunnelExcavationData
-
 # define BoreClass as class, to separate definition of methods from execution
 #   This makes it possible to define the BoreClass methods outside of this routine (e.g. at start of script).
 #   Class method is used as a modifier to the TunnelExcavationData (dataframe) class.
+
+tunn_h =13.0   # define tunnel height
+TunnelExcavationData = merge_sel  # JK -temporary until variable name merge_sel replaced with TunnelExcavationData
+
 class BoreClass:
     """Determine Bore Class for TBM tunnels"""
     # BC1 - tunnel predominantly in soil

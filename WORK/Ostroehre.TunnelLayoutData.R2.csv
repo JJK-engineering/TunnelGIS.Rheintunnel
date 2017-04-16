@@ -1,7 +1,7 @@
 WBScode,WorkType,ExcavationType,ProfileType,SectionArea,Station,Description
 1,NaN,NaN,NaN,NaN,204+874.1,"highway"
-111a,UEX,MUL,MUL1,120.0,205+490,"north construction portal, begin conventional excavation"
-111b,UEX,TBM,TBM1,132.7,205+520,"begin TBM section"
-111c,UEX,MUL,MUL1,120.0,208+620,"end TBM section,begin conventional excavation"
-1,NaN,NaN,NaN,NaN,208+740,"south construction portal"
+111a,UEX,MUL,MUL1,120.0,205+490,"conventional excavation"
+111b,UEX,TBM,TBM1,132.7,205+520,"TBM section"
+111c,UEX,MUL,MUL1,120.0,208+620,"conventional excavation"
+1,NaN,NaN,NaN,NaN,208+740,"highway"
 1,NaN,NaN,NaN,NaN,209+528.128,"highway"
