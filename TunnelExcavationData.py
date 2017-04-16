@@ -357,23 +357,53 @@ merge_sel["BoreClass"]= np.nan
 merge_sel["SupportClass"]= np.nan
 merge_sel["DisposalClass"]= np.nan
 
-th =13.0   #Tunnel height
+tunn_h =13.0   #Tunnel height
+TunnelExcavationData = merge_sel  # JK -temporary until variable name merge_sel replaced with TunnelExcavationData
 
-# Bore Class
-#  BC1
-merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
-    (merge_sel["Rocksurface"] <= merge_sel["Elevation"] -th*0.25),"BoreClass"] ="BC1"     
+# define BoreClass as class, to separate definition of methods execution
+#   This makes it possible to define the BoreClass methods outside of this routine (e.g. at start of script).
+#   Note that class method is used as a modifier to the TunnelExcavationData (dataframe) class.
+class BoreClass:
+    """Determine Bore Class for TBM tunnels"""
+    # BC1
+    def bc1(self):
+        TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & 
+        (TunnelExcavationData["Rocksurface"] <= TunnelExcavationData["Elevation"] -tunn_h*0.25),"BoreClass"] \
+        ="BC1"
+    # BC2
+    def bc2(self):
+        TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & 
+        (TunnelExcavationData["Rocksurface"] > TunnelExcavationData["Elevation"] -tunn_h*0.25) & 
+        (TunnelExcavationData["Rocksurface"] < TunnelExcavationData["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        = "BC2"
+    # BC3
+    def bc3(self):        
+        TunnelExcavationData.loc[(TunnelExcavationData["ExcavationType"] == "TBM") & \
+        (TunnelExcavationData["Rocksurface"] >= TunnelExcavationData["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        = "BC3"
+
+# instantiate an instance of BoreClass
+bore_class=BoreClass()
+# call bore_class methods for BC1, BC2, BC3
+bore_class.bc1()
+bore_class.bc2()
+bore_class.bc3()
+# check: merge_sel["BoreClass"].value_counts()  # equals 805+188+60 for Ostroehre
+# check: merge_sel["ExcavationType"].value_counts() 
+
+##th =13.0   #Tunnel height
+##  BC1
+##merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
+##    (merge_sel["Rocksurface"] <= merge_sel["Elevation"] -th*0.25),"BoreClass"] ="BC1"     
 #  BC2   
-merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
-    (merge_sel["Rocksurface"] > merge_sel["Elevation"] -th*0.25) & 
-(merge_sel["Rocksurface"] < merge_sel["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC2"     
+##merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
+##    (merge_sel["Rocksurface"] > merge_sel["Elevation"] -th*0.25) & 
+##    (merge_sel["Rocksurface"] < merge_sel["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC2"     
 #  BC3        
-merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
-    (merge_sel["Rocksurface"] >= merge_sel["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC3"
-# check: merge_sel["BoreClass"].value_counts()
-# check: merge_sel["ExcavationType"].value_counts() # equal  805+188+60
+##merge_sel.loc[(merge_sel["ExcavationType"] == "TBM") & \
+##    (merge_sel["Rocksurface"] >= merge_sel["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC3"
 
-# Support Class
+# Support Class                                                             # JK ToDo: define SC's as Class
 #  SCT
 merge_sel.loc[(merge_sel["ExcavationType"] == "TBM"), \
     "SupportClass"] = "SCT"
@@ -383,7 +413,7 @@ merge_sel.loc[(merge_sel["ExcavationType"] == "MUL"), \
 # check: merge_sel["SupportClass"].value_counts()
 # check: merge_sel["ExcavationType"].value_counts() 
 
-# Disposal Class
+# Disposal Class                                                            # JK ToDo: define MC's as Class
 #  MC5
 merge_sel.loc[(merge_sel["BoreClass"] ==  "BC1") | (merge_sel["BoreClass"] == "BC2"), \
     "DisposalClass"] = "MC5"
