@@ -22,7 +22,7 @@
 
 # Required Input Files:
 # "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"   -DEM with surface topography
-# "WORK/Felsisohypsen-raster.tif"                     -DEM with rock surface
+# "WORK/Felsisohypsen-raster.tif"                     -DEM with rock surfac
 # "WORK/OstrohrR2.csv"                                -stationed tunnel alignment#
 # "WORK/Ostroehre.TunnelLayoutData.R2.csv"            -tunnel layout data
 
@@ -60,80 +60,83 @@ RockSurface = "WORK/Felsisohypsen-raster.tif"
 AlignmentData = "WORK/Ostroehre.AlignmentData.R2.csv"
 LayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 
+TunnelLayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
+BedrockSurface = "WORK/Felsisohypsen-raster.tif"
 
 # ----------------------------------------------------------------------------------------------------------------
 # define output files
 # ----------------------------------------------------------------------------------------------------------------
 
+Alignment_Tunnel_variables = "WORK/Ostroehre.TunnelExcavationData.R2.csv"  # JK ToDo: cleanup 
+Alignment_shp ='WORK/Ostrohr.Alignment.R2.shp'
 TunnelExcavationData = "WORK/Ostroehre.TunnelExcavationData.R2.csv"
-Alignment_SHP ='WORK/Ostroehre.Alignment.R2.shp'
 # temporary data
-Alignment_DTM = "WORK/Ostroehre.Terrain.R2.csv"
-Alignment_RockSurface = "WORK/Ostroehre.RockSurface.R2.csv"  # JK ToDo: RockSurface?
+Alignment_DTM = "WORK/Ostrohr.DTM.R2.csv"
+Alignment_BedrockSurface = "WORK/Ostrohr.BedrockSurface.R2.csv"  # JK ToDo: BedrockSurface?
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# create alignment_df (dataframe) from .csv
+# create Alignment_df from .csv (dataframe)
 # Important: Before the df is created the data should be checked.
-#   E.g. make sure that it does not contain trailing blank lines and that duplicate lines are deleted.
-# result: alignment_df
+#   E.g. make sure that it does not contain trailing blank lines and that duplicates are deleted.
+# result: Alignment_df
 # ----------------------------------------------------------------------------------------------------------------
 
-alignment_df = pd.read_csv(AlignmentData)
-alignment_df = alignment_df.dropna(how = "all")  #delete row if only NA are present in row
-
-
-# ----------------------------------------------------------------------------------------------------------------
-# create layout_df from .csv
-# result: layout_df
-# ----------------------------------------------------------------------------------------------------------------
-
-layout_df = pd.read_csv(LayoutData)
+Alignment_df = pd.read_csv(AlignmentData)
+Alignment_df = Alignment_df.dropna(how = "all")  #delete row if only NA are present in row
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# convert alignment_df["Station"] => alignment_df["StationReal"] 
-# result: alignment_df["StationReal"], LayoutData_Station_list,
-#         layout_df["LayoutData_Station_real"]
-print "df header StationReal"
+# create TunnelLayoutData_df from .csv
+# result: TunnelLayoutData_df
 # ----------------------------------------------------------------------------------------------------------------
 
-alignment_station_list = alignment_df["Station"].tolist()
-    # check: len(alignment_station_list)
+TunnelLayoutData_df = pd.read_csv(TunnelLayoutData)
 
-alignment_df["StationReal"] = np.nan
 
-for n in range(0, len(alignment_station_list)):
-    station_sel = alignment_df.iloc[n]["Station"]
+# ----------------------------------------------------------------------------------------------------------------
+# convert Alignment_df["Station"] => Alignment_df["Alignment_Station_real"] 
+# result: Alignment_df["Alignment_Station_real"], TunnelLayoutData_Station_list,
+#         TunnelLayoutData_df["TunnelLayoutData_Station_real"]
+print "df Alignment_Station_real"
+# ----------------------------------------------------------------------------------------------------------------
+
+Alignment_Station_list = Alignment_df["Station"].tolist()
+    # check: len(Alignment_Station_list)
+
+Alignment_df["Alignment_Station_real"] = np.nan
+
+for n in range(0, len(Alignment_Station_list)):
+    station_sel = Alignment_df.iloc[n]["Station"]
     station_sel_int = float(station_sel.replace("+", ""))
-    alignment_df.iloc[n, alignment_df.columns.get_loc("StationReal")] = station_sel_int
-    # alignment_df.columns.get_loc("StationReal") = 5
+    Alignment_df.iloc[n, Alignment_df.columns.get_loc("Alignment_Station_real")] = station_sel_int
+    # Alignment_df.columns.get_loc("Alignment_Station_real") = 5
 
-# layout_df["Station"] => layout_df["LayoutData_Station_real"] 
-LayoutData_Station_list = layout_df["Station"].tolist()
-# check: len(LayoutData_Station_list)
+# TunnelLayoutData_df["Station"] => TunnelLayoutData_df["TunnelLayoutData_Station_real"] 
+TunnelLayoutData_Station_list = TunnelLayoutData_df["Station"].tolist()
+# check: len(TunnelLayoutData_Station_list)
 
-layout_df["LayoutData_Station_real"] = np.nan
+TunnelLayoutData_df["TunnelLayoutData_Station_real"] = np.nan
 
-for n in range(0, len(LayoutData_Station_list)):
-    station_sel = layout_df.iloc[n]["Station"]
+for n in range(0, len(TunnelLayoutData_Station_list)):
+    station_sel = TunnelLayoutData_df.iloc[n]["Station"]
     station_sel_int = float(station_sel.replace("+", ""))
-    layout_df.iloc[n, layout_df.columns.get_loc("LayoutData_Station_real")] \
+    TunnelLayoutData_df.iloc[n, TunnelLayoutData_df.columns.get_loc("TunnelLayoutData_Station_real")] \
         = station_sel_int
-    # alignment_df.columns.get_loc("StationReal") = 5
+    # Alignment_df.columns.get_loc("Alignment_Station_real") = 5
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# check if layout_df["LayoutData_Station_real"] exists in alignment_df["StationReal"]
-#   If it does not exist create a new Station in alignment_df
-# result: alignment_df with added Stations
+# check if TunnelLayoutData_df["TunnelLayoutData_Station_real"] exists in Alignment_df["Alignment_Station_real"]
+#   If it does not exist create a new Station in Alignment_df
+# result: Alignment_df with added Stations
 print "adding Stations"
 # ----------------------------------------------------------------------------------------------------------------
 
-# list stations in alignment_df and layout_df
-# result: StationReal_list and LayoutData_Station_real_list
-StationReal_list = alignment_df["StationReal"].tolist()
-LayoutData_Station_real_list = layout_df["LayoutData_Station_real"].tolist()
+# list stations in Alignment_df and TunnelLayoutData_df
+# result: Alignment_Station_real_list and TunnelLayoutData_Station_real_list
+Alignment_Station_real_list = Alignment_df["Alignment_Station_real"].tolist()
+TunnelLayoutData_Station_real_list = TunnelLayoutData_df["TunnelLayoutData_Station_real"].tolist()
 
 # within this vicinity of a station no new station will be created
 vicinity = 0.1
@@ -146,23 +149,23 @@ Station = []
 Station_real = []
 
 # Loop through stations
-for n in LayoutData_Station_real_list:
-    if n in StationReal_list:
+for n in TunnelLayoutData_Station_real_list:
+    if n in Alignment_Station_real_list:
         pass
     else:
-        neighbour1_StationReal = max([i for i in StationReal_list if i < n]) 
-        neighbour2_StationReal = min([i for i in StationReal_list if i > n])       
-        if n < neighbour1_StationReal + vicinity or n > neighbour2_StationReal + vicinity:
+        neighbour1_Alignment_Station_real = max([i for i in Alignment_Station_real_list if i < n]) 
+        neighbour2_Alignment_Station_real = min([i for i in Alignment_Station_real_list if i > n])       
+        if n < neighbour1_Alignment_Station_real + vicinity or n > neighbour2_Alignment_Station_real + vicinity:
             pass
         else: 
-            neighbour1 = alignment_df.loc[alignment_df["StationReal"]
-                                          == neighbour1_StationReal,]
-            neighbour2 = alignment_df.loc[alignment_df["StationReal"]
-                                          == neighbour2_StationReal,]
+            neighbour1 = Alignment_df.loc[Alignment_df["Alignment_Station_real"]
+                                          == neighbour1_Alignment_Station_real,]
+            neighbour2 = Alignment_df.loc[Alignment_df["Alignment_Station_real"]
+                                          == neighbour2_Alignment_Station_real,]
             delta_x_neighbour1and2 = abs(neighbour2.Easting.tolist()[0]-neighbour1.Easting.tolist()[0]) #delta x
             delta_y_neighbour1and2 = abs(neighbour2.Northing.tolist()[0]-neighbour1.Northing.tolist()[0]) #delta y
             length_neighbour1and2 = (delta_x_neighbour1and2**2 +delta_y_neighbour1and2**2)**(0.5) # L
-            length_neighbour1andNewPoint = n-neighbour1.StationReal.tolist()[0]
+            length_neighbour1andNewPoint = n-neighbour1.Alignment_Station_real.tolist()[0]
             Easting_NewPoint_sel = neighbour2.Easting.tolist()[0] \
                                  + ((delta_y_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
             Northing_NewPoint_sel = neighbour2.Northing.tolist()[0] \
@@ -173,71 +176,71 @@ for n in LayoutData_Station_real_list:
             Northing_NewPoint.append(Northing_NewPoint_sel)
             Elevation_NewPoint.append(Elevation_NewPoint_sel)
             Station_real.append(n)
-            Station_sel = layout_df.loc[layout_df['LayoutData_Station_real']
+            Station_sel = TunnelLayoutData_df.loc[TunnelLayoutData_df['TunnelLayoutData_Station_real']
                                                   == n, 'Station'] 
             Station.append(Station_sel.tolist()[0])
            
 NewStation_df = pd.DataFrame({"Easting": Easting_NewPoint, "Northing": Northing_NewPoint,
-                              "Elevation": Elevation_NewPoint, "StationReal": Station_real,
+                              "Elevation": Elevation_NewPoint, "Alignment_Station_real": Station_real,
                               "Station": Station})
-    # check len(alignment_df)
+    # check len(Alignment_df)
     # check len(NewStation_df)
 
-# Contatenate alignment_df with NewStation_df
-# result: alignment_df
-frames = [alignment_df, NewStation_df]
-alignment_df = pd.concat(frames)
-    # check: len(alignment_df)
-    # check: alignment_df.tail()
+# Contatenate Alignment_df with NewStation_df
+# result: Alignment_df
+frames = [Alignment_df, NewStation_df]
+Alignment_df = pd.concat(frames)
+    # check: len(Alignment_df)
+    # check: Alignment_df.tail()
 
     
 # ----------------------------------------------------------------------------------------------------------------
-# create Alignment_spatial from alignment_df
-# result: Alignment_SHP
+# create Alignment_spatial from Alignment_df
+# result: Alignment_shp
 # ----------------------------------------------------------------------------------------------------------------
 
 Alignment_spatial_points = [sp.geometry.Point(row['Easting'], row['Northing'])
-                            for key, row in alignment_df.iterrows()]
+                            for key, row in Alignment_df.iterrows()]
 Alignment_crs = {'init': 'epsg:2056'}  #define crs
-Alignment_spatial = gpd.GeoDataFrame(alignment_df, geometry=Alignment_spatial_points, crs = Alignment_crs)
-Alignment_spatial.to_file(Alignment_SHP, driver='ESRI Shapefile') 
+Alignment_spatial = gpd.GeoDataFrame(Alignment_df, geometry=Alignment_spatial_points, crs = Alignment_crs)
+Alignment_spatial.to_file(Alignment_shp, driver='ESRI Shapefile') 
 
 
 # ----------------------------------------------------------------------------------------------------------------
 # use grass functions to get raster values for points along tunnel axis and write to .csv files
-# result: Alignment_DTM, Alignment_RockSurface
+# result: Alignment_DTM, Alignment_BedrockSurface
 print "get raster values"
 # ----------------------------------------------------------------------------------------------------------------
 
 # Alignment_DTM
-processing.runalg("grass7:r.what.points",DTM,Alignment_SHP,
+processing.runalg("grass7:r.what.points",DTM,Alignment_shp,
                   "NA",",",500,True,False,False,False,False,
                   "2603510.0,2624270.0,1260650.0,1274890.0",-1,0.0001,Alignment_DTM)
-# Alignment_RockSurface                  
-processing.runalg("grass7:r.what.points",RockSurface,Alignment_SHP,
+# Alignment_BedrockSurface                  
+processing.runalg("grass7:r.what.points",BedrockSurface,Alignment_shp,
                   "NA",",",500, True,False,False,False,False,
-                  "2603510.0,2624270.0,1260650.0,1274890.0",-1,0.0001,Alignment_RockSurface)
+                  "2603510.0,2624270.0,1260650.0,1274890.0",-1,0.0001,Alignment_BedrockSurface)
 ## warning: Not all input layers use the same CRS -> data seems OK
     # check:  Alginemnt_spatial.crs
 
 
 # ----------------------------------------------------------------------------------------------------------------
 # create df's
-# result: Alignment_DTM_df, Alignment_RockSurface_df
+# result: Alignment_DTM_df, Alignment_BedrockSurface_df
 # ----------------------------------------------------------------------------------------------------------------
 Alignment_DTM_df  = pd.read_csv(Alignment_DTM)
-Alignment_RockSurface_df  = pd.read_csv(Alignment_RockSurface)
+Alignment_BedrockSurface_df  = pd.read_csv(Alignment_BedrockSurface)
 
 
 # ----------------------------------------------------------------------------------------------------------------
 # prepare for join of grass results using pandas
-# result: alignment_df, Alignment_DTM_df_sel, Alignment_RockSurface_df_sel
+# result: Alignment_df, Alignment_DTM_df_sel, Alignment_BedrockSurface_df_sel
 # ----------------------------------------------------------------------------------------------------------------
 
-# prepare alignment_df
-    # check:  alignment_df.head()
-alignment_df = alignment_df.loc[:,["Station","Easting", "Northing", "Elevation", "StationReal"]]
-    # check:  alignment_df.head()
+# prepare Alignment_df
+    # check:  Alignment_df.head()
+Alignment_df = Alignment_df.loc[:,["Station","Easting", "Northing", "Elevation", "Alignment_Station_real"]]
+    # check:  Alignment_df.head()
 
 # prepare Alignment_DTM_df_sel
     # check:  Alignment_DTM_df.head()
@@ -248,18 +251,18 @@ if len(Alignment_DTM_df_coleqtmp) != 1:
 Alignment_DTM_df_rename = Alignment_DTM_df.rename(
     columns= {Alignment_DTM_df_coleqtmp[0]: "DTM"})
 Alignment_DTM_df_sel = Alignment_DTM_df_rename.loc[:,["easting", "northing", "DTM"]]
-    # check:  Alignment_RockSurface_df.head()
+    # check:  Alignment_BedrockSurface_df.head()
 
-# prepare Alignment_RockSurface_df_coleqtmp
-Alignment_RockSurface_df_coleqtmp = [col for col in Alignment_RockSurface_df.columns if 'tmp' in col]
-if len(Alignment_RockSurface_df_coleqtmp) != 1:
-    print "Extraction of RockSurface_csv_coleqtmp col=tmp did not work properly. Please check"
+# prepare Alignment_BedrockSurface_df_coleqtmp
+Alignment_BedrockSurface_df_coleqtmp = [col for col in Alignment_BedrockSurface_df.columns if 'tmp' in col]
+if len(Alignment_BedrockSurface_df_coleqtmp) != 1:
+    print "Extraction of BedrockSurface_csv_coleqtmp col=tmp did not work properly. Please check"
     exit()
-Alignment_RockSurface_df_rename = Alignment_RockSurface_df.rename(
-    columns= {Alignment_RockSurface_df_coleqtmp[0]: "RockSurface"})
-Alignment_RockSurface_df_sel = Alignment_RockSurface_df_rename.loc[
-    :,["easting", "northing", "RockSurface"]]  
-    # check:  Alignment_RockSurface_df_sel.head()
+Alignment_BedrockSurface_df_rename = Alignment_BedrockSurface_df.rename(
+    columns= {Alignment_BedrockSurface_df_coleqtmp[0]: "Rocksurface"})
+Alignment_BedrockSurface_df_sel = Alignment_BedrockSurface_df_rename.loc[
+    :,["easting", "northing", "Rocksurface"]]  
+    # check:  Alignment_BedrockSurface_df_sel.head()
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -269,17 +272,17 @@ Alignment_RockSurface_df_sel = Alignment_RockSurface_df_rename.loc[
 print 'merge_final'
 # ----------------------------------------------------------------------------------------------------------------
 
-alignment_df = alignment_df.round(decimals=3)
+Alignment_df = Alignment_df.round(decimals=3)
 Alignment_DTM_df_sel = Alignment_DTM_df_sel.round(decimals=3)
-Alignment_RockSurface_df_sel = Alignment_RockSurface_df_sel.round(decimals=3)
+Alignment_BedrockSurface_df_sel = Alignment_BedrockSurface_df_sel.round(decimals=3)
 
 # merge DTM to Alignment
-merge_Alignment_DTM= pd.merge(left= alignment_df, right = Alignment_DTM_df_sel, 
+merge_Alignment_DTM= pd.merge(left= Alignment_df, right = Alignment_DTM_df_sel, 
                  left_on = ["Easting","Northing"], 
                  right_on = ["easting","northing"], how = "left")
 
-# merge RockSurface to Alignment_DTM
-merge_final = pd.merge(merge_Alignment_DTM, Alignment_RockSurface_df_sel, 
+# merge Rocksurface to Alignment_DTM
+merge_final = pd.merge(merge_Alignment_DTM, Alignment_BedrockSurface_df_sel, 
                  left_on = ["Easting","Northing"], 
                  right_on = ["easting","northing"])
     # check:  merge_final.head()
@@ -292,12 +295,12 @@ merge_final = pd.merge(merge_Alignment_DTM, Alignment_RockSurface_df_sel,
 print 'cleaning up merge'
 # ----------------------------------------------------------------------------------------------------------------
 
-TunnExcvDF = merge_final.loc[:,["Station","Easting", "Northing", "Elevation", "DTM", "RockSurface",
-                               "StationReal"]]
+TunnExcvDF = merge_final.loc[:,["Station","Easting", "Northing", "Elevation", "DTM", "Rocksurface",
+                               "Alignment_Station_real"]]
     # check:  TunnExcvDF.head()
     # check:  list(TunnExcvDF)
 # sort by Station
-TunnExcvDF = TunnExcvDF.sort(['StationReal'], ascending=[1])
+TunnExcvDF = TunnExcvDF.sort(['Alignment_Station_real'], ascending=[1])
 
     
 # ----------------------------------------------------------------------------------------------------------------
@@ -305,7 +308,7 @@ TunnExcvDF = TunnExcvDF.sort(['StationReal'], ascending=[1])
 # result: TunnExcvDF['RockCover']
 # ----------------------------------------------------------------------------------------------------------------
 
-TunnExcvDF['RockCover'] = TunnExcvDF.RockSurface - TunnExcvDF.Elevation
+TunnExcvDF['RockCover'] = TunnExcvDF.Rocksurface - TunnExcvDF.Elevation
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -322,28 +325,28 @@ TunnExcvDF["ProfileType"] = np.nan
 TunnExcvDF["SectionArea"] = np.nan
 TunnExcvDF["Description"] = np.nan
 
-for n in range(0, len(LayoutData_Station_real_list)):
+for n in range(0, len(TunnelLayoutData_Station_real_list)):
     nn = n+1 
-    if n == len(LayoutData_Station_real_list) -1:
-        LayoutData_Station_real_list.append(1e12)
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "WBScode"] \
-        = layout_df["WBScode"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "WorkType"] \
-        = layout_df["WorkType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "ExcavationType"] \
-        = layout_df["ExcavationType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "ProfileType"] \
-        = layout_df["ProfileType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "SectionArea"] \
-        = layout_df["SectionArea"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
-        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "Description"] \
-        = layout_df["Description"].tolist()[n]
+    if n == len(TunnelLayoutData_Station_real_list) -1:
+        TunnelLayoutData_Station_real_list.append(1e12)
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "WBScode"] \
+        = TunnelLayoutData_df["WBScode"].tolist()[n]
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "WorkType"] \
+        = TunnelLayoutData_df["WorkType"].tolist()[n]
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "ExcavationType"] \
+        = TunnelLayoutData_df["ExcavationType"].tolist()[n]
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "ProfileType"] \
+        = TunnelLayoutData_df["ProfileType"].tolist()[n]
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "SectionArea"] \
+        = TunnelLayoutData_df["SectionArea"].tolist()[n]
+    TunnExcvDF.loc[(TunnExcvDF["Alignment_Station_real"] >= TunnelLayoutData_Station_real_list[n])
+        & (TunnExcvDF["Alignment_Station_real"] < TunnelLayoutData_Station_real_list[nn]), "Description"] \
+        = TunnelLayoutData_df["Description"].tolist()[n]
 
     
 # ----------------------------------------------------------------------------------------------------------------
@@ -368,18 +371,18 @@ class BoreClass:
     # BC1 - tunnel predominantly in soil
     def bc1(self):
         TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
-        (TunnExcvDF["RockSurface"] <= TunnExcvDF["Elevation"] -tunn_h*0.25),"BoreClass"] \
+        (TunnExcvDF["Rocksurface"] <= TunnExcvDF["Elevation"] -tunn_h*0.25),"BoreClass"] \
         ="BC1"
     # BC2 - tunnel with mixed face
     def bc2(self):
         TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
-        (TunnExcvDF["RockSurface"] > TunnExcvDF["Elevation"] -tunn_h*0.25) & 
-        (TunnExcvDF["RockSurface"] < TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        (TunnExcvDF["Rocksurface"] > TunnExcvDF["Elevation"] -tunn_h*0.25) & 
+        (TunnExcvDF["Rocksurface"] < TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
         = "BC2"
     # BC3 - tunnel inf rock
     def bc3(self):
         TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-        (TunnExcvDF["RockSurface"] >= TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        (TunnExcvDF["Rocksurface"] >= TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
         = "BC3"
 
 # instantiate an instance of BoreClass
@@ -394,14 +397,14 @@ bore_class.bc3()
 ##th =13.0   #Tunnel height
 ##  BC1
 ##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] <= TunnExcvDF["Elevation"] -th*0.25),"BoreClass"] ="BC1"     
+##    (TunnExcvDF["Rocksurface"] <= TunnExcvDF["Elevation"] -th*0.25),"BoreClass"] ="BC1"     
 #  BC2   
 ##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] > TunnExcvDF["Elevation"] -th*0.25) & 
-##    (TunnExcvDF["RockSurface"] < TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC2"     
+##    (TunnExcvDF["Rocksurface"] > TunnExcvDF["Elevation"] -th*0.25) & 
+##    (TunnExcvDF["Rocksurface"] < TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC2"     
 #  BC3        
 ##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] >= TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC3"
+##    (TunnExcvDF["Rocksurface"] >= TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC3"
 
 # Support Class                                                             # JK ToDo: define SC's as Class
 #  SCT
@@ -434,23 +437,23 @@ TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "MUL"), \
 print 'calcuating volume'
 # ----------------------------------------------------------------------------------------------------------------
 
-# initialize interval length (StationInterval field)
-TunnExcvDF["StationInterval"] = np.nan
-TunnExcvDF["ExcvationVolume"] = np.nan
+# initialize interval length (Distance field)
+TunnExcvDF["Distance"] = np.nan
+TunnExcvDF["Volume"] = np.nan
 
-# Calculate "StationInterval", "Area1_mean_dist" and "Area2_mean_dist"
+# Calculate "Distance", "Area1_mean_dist" and "Area2_mean_dist"
 n = 0
 
 # use .iat instead of .iloc to return scalar values (*1000 faster)
-# LayoutData must show missing data as NaN (None is read as string value)
+# TunnelLayoutData must show missing data as NaN (None is read as string value)
 for i in range(len(TunnExcvDF.index) -1):
     nn= n+1
-    TunnExcvDF["StationInterval"].iat[n] = ((TunnExcvDF["Easting"].iat[nn] -TunnExcvDF["Easting"].iat[n])**2 
+    TunnExcvDF["Distance"].iat[n] = ((TunnExcvDF["Easting"].iat[nn] -TunnExcvDF["Easting"].iat[n])**2 
         +(TunnExcvDF["Northing"].iat[nn] -TunnExcvDF["Northing"].iat[n])**2 
         +(TunnExcvDF["Elevation"].iat[nn] -TunnExcvDF["Elevation"].iat[n])**2 )**(0.5)
-    TunnExcvDF["ExcvationVolume"].iat[n] = TunnExcvDF["SectionArea"].iat[n] * TunnExcvDF["StationInterval"].iat[n]
+    TunnExcvDF["Volume"].iat[n] = TunnExcvDF["SectionArea"].iat[n] * TunnExcvDF["Distance"].iat[n]
     n = n+1
 # check:
-#    print TunnExcvDF.loc[:,["Station","ExcavationType","StationInterval","ExcvationVolume"]].to_string()
+#     print TunnExcvDF.loc[:,["Station","ExcavationType","Distance","SectionArea","Volume"]].to_string()
 
 TunnExcvDF.to_csv(TunnelExcavationData, sep=",")
