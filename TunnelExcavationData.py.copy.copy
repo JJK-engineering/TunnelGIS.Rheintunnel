@@ -96,65 +96,65 @@ layout_df = pd.read_csv(LayoutData)
 
 # ----------------------------------------------------------------------------------------------------------------
 # convert alignment_df["Station"] => alignment_df["StationReal"] 
-# result: alignment_Station_list,
-#         alignment_df["StationReal"], layout_df["StationReal"]
+# result: alignment_station_list,
+#         alignment_df["StationReal"], layout_df["LayoutData_Station_real"]
 print "df header StationReal"
 # ----------------------------------------------------------------------------------------------------------------
 
-alignment_Station_list = alignment_df["Station"].tolist()
-# check: len(alignment_Station_list)
+alignment_station_list = alignment_df["Station"].tolist()
+# check: len(alignment_station_list)
 
 alignment_df["StationReal"] = np.nan
 
-for n in range(0, len(alignment_Station_list)):
+for n in range(0, len(alignment_station_list)):
     station_sel = alignment_df.iloc[n]["Station"]
-    station_sel_real = float(station_sel.replace("+", ""))
-    alignment_df.iloc[n, alignment_df.columns.get_loc("StationReal")] = station_sel_real
+    station_sel_int = float(station_sel.replace("+", ""))
+    alignment_df.iloc[n, alignment_df.columns.get_loc("StationReal")] = station_sel_int
     # alignment_df.columns.get_loc("StationReal") = 5
 
-# layout_df["Station"] => layout_df["StationReal"] 
-layout_Station_list = layout_df["Station"].tolist()
-# check: len(layout_Station_list)
+# layout_df["Station"] => layout_df["LayoutData_Station_real"] 
+LayoutData_Station_list = layout_df["Station"].tolist()
+# check: len(LayoutData_Station_list)
 
-layout_df["StationReal"] = np.nan
+layout_df["LayoutData_Station_real"] = np.nan
 
-for n in range(0, len(layout_Station_list)):
+for n in range(0, len(LayoutData_Station_list)):
     station_sel = layout_df.iloc[n]["Station"]
-    station_sel_real = float(station_sel.replace("+", ""))
-    layout_df.iloc[n, layout_df.columns.get_loc("StationReal")] \
-        = station_sel_real
+    station_sel_int = float(station_sel.replace("+", ""))
+    layout_df.iloc[n, layout_df.columns.get_loc("LayoutData_Station_real")] \
+        = station_sel_int
     # alignment_df.columns.get_loc("StationReal") = 5
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# check if layout_df["StationReal"] exists in alignment_df["StationReal"]
+# check if layout_df["LayoutData_Station_real"] exists in alignment_df["StationReal"]
 #   If it does not exist create a new Station in alignment_df
 # result: alignment_df with added Stations
 print "adding Stations"
 # ----------------------------------------------------------------------------------------------------------------
 
 # list stations in alignment_df and layout_df
-# result: alignment_StationReal_list and layout_StationReal_list
-alignment_StationReal_list = alignment_df["StationReal"].tolist()
-layout_StationReal_list = layout_df["StationReal"].tolist()
+# result: StationReal_list and LayoutData_Station_real_list
+StationReal_list = alignment_df["StationReal"].tolist()
+LayoutData_Station_real_list = layout_df["LayoutData_Station_real"].tolist()
 
 # within this vicinity of a station no new station will be created
 vicinity = 0.1
 
 # define new variables
-easting_newpoint = []
-northing_newpoint = []
-elevation_newpoint = []
-station = []
-station_real = []
+Easting_NewPoint = []
+Northing_NewPoint = []
+Elevation_NewPoint = []
+Station = []
+Station_real = []
 
 # Loop through stations
-for n in layout_StationReal_list:
-    if n in alignment_StationReal_list:
+for n in LayoutData_Station_real_list:
+    if n in StationReal_list:
         pass
     else:
-        neighbour1_StationReal = max([i for i in alignment_StationReal_list if i < n]) 
-        neighbour2_StationReal = min([i for i in alignment_StationReal_list if i > n])       
+        neighbour1_StationReal = max([i for i in StationReal_list if i < n]) 
+        neighbour2_StationReal = min([i for i in StationReal_list if i > n])       
         if n < neighbour1_StationReal + vicinity or n > neighbour2_StationReal + vicinity:
             pass
         else: 
@@ -166,23 +166,23 @@ for n in layout_StationReal_list:
             delta_y_neighbour1and2 = abs(neighbour2.Northing.tolist()[0]-neighbour1.Northing.tolist()[0]) #delta y
             length_neighbour1and2 = (delta_x_neighbour1and2**2 +delta_y_neighbour1and2**2)**(0.5) # L
             length_neighbour1andNewPoint = n-neighbour1.StationReal.tolist()[0]
-            easting_newpoint_sel = neighbour2.Easting.tolist()[0] \
+            Easting_NewPoint_sel = neighbour2.Easting.tolist()[0] \
                                  + ((delta_y_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
-            northing_newpoint_sel = neighbour2.Northing.tolist()[0] \
+            Northing_NewPoint_sel = neighbour2.Northing.tolist()[0] \
                                   + ((delta_x_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
-            elevation_newpoint_sel = neighbour2.Elevation.tolist()[0] \
+            Elevation_NewPoint_sel = neighbour2.Elevation.tolist()[0] \
                                    + ((delta_x_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
-            easting_newpoint.append(easting_newpoint_sel)
-            northing_newpoint.append(northing_newpoint_sel)
-            elevation_newpoint.append(elevation_newpoint_sel)
-            station_real.append(n)
-            Station_sel = layout_df.loc[layout_df['StationReal']
+            Easting_NewPoint.append(Easting_NewPoint_sel)
+            Northing_NewPoint.append(Northing_NewPoint_sel)
+            Elevation_NewPoint.append(Elevation_NewPoint_sel)
+            Station_real.append(n)
+            Station_sel = layout_df.loc[layout_df['LayoutData_Station_real']
                                                   == n, 'Station'] 
-            station.append(Station_sel.tolist()[0])
+            Station.append(Station_sel.tolist()[0])
            
-NewStation_df = pd.DataFrame({"Easting": easting_newpoint, "Northing": northing_newpoint,
-                              "Elevation": elevation_newpoint, "StationReal": station_real,
-                              "Station": station})
+NewStation_df = pd.DataFrame({"Easting": Easting_NewPoint, "Northing": Northing_NewPoint,
+                              "Elevation": Elevation_NewPoint, "StationReal": Station_real,
+                              "Station": Station})
     # check len(alignment_df)
     # check len(NewStation_df)
 
@@ -325,27 +325,27 @@ TunnExcvDF["ProfileType"] = np.nan
 TunnExcvDF["SectionArea"] = np.nan
 TunnExcvDF["Description"] = np.nan
 
-for n in range(0, len(layout_StationReal_list)):
+for n in range(0, len(LayoutData_Station_real_list)):
     nn = n+1 
-    if n == len(layout_StationReal_list) -1:
-        layout_StationReal_list.append(1e12)
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "WBScode"] \
+    if n == len(LayoutData_Station_real_list) -1:
+        LayoutData_Station_real_list.append(1e12)
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "WBScode"] \
         = layout_df["WBScode"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "WorkType"] \
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "WorkType"] \
         = layout_df["WorkType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "ExcavationType"] \
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "ExcavationType"] \
         = layout_df["ExcavationType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "ProfileType"] \
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "ProfileType"] \
         = layout_df["ProfileType"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "SectionArea"] \
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "SectionArea"] \
         = layout_df["SectionArea"].tolist()[n]
-    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= layout_StationReal_list[n])
-        & (TunnExcvDF["StationReal"] < layout_StationReal_list[nn]), "Description"] \
+    TunnExcvDF.loc[(TunnExcvDF["StationReal"] >= LayoutData_Station_real_list[n])
+        & (TunnExcvDF["StationReal"] < LayoutData_Station_real_list[nn]), "Description"] \
         = layout_df["Description"].tolist()[n]
 
     
