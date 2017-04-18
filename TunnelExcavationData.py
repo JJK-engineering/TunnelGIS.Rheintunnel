@@ -21,10 +21,10 @@
 # Users are expected to understand and adjust the code as needed for their application.
 
 # Required Input Files:
-# "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"   -DEM with surface topography
-# "WORK/Felsisohypsen-raster.tif"                     -DEM with rock surface
-# "WORK/OstrohrR2.csv"                                -stationed tunnel alignment#
-# "WORK/Ostroehre.TunnelLayoutData.R2.csv"            -tunnel layout data
+#   "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"   -DEM with surface topography
+#   "WORK/Felsisohypsen-raster.tif"                     -DEM with rock surface
+#   "WORK/OstrohrR2.csv"                                -stationed tunnel alignment#
+#   "WORK/Ostroehre.TunnelLayoutData.R2.csv"            -tunnel layout data
 
 # References:
 # http://gis.stackexchange.com/questions/197825/how-to-convert-multiple-csv-files-to-shp-using-python-and-no-arcpy
@@ -55,8 +55,8 @@ os.chdir("/home/kaelin_joseph/TunnelGIS.Rheintunnel/")
 # define input files
 # ----------------------------------------------------------------------------------------------------------------
 
-DTM = "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"
-RockSurface = "WORK/Felsisohypsen-raster.tif"
+DTM = "WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif"  
+RockSurface = "WORK/Felsisohypsen-raster.tif"            
 AlignmentData = "WORK/Ostroehre.AlignmentData.R2.csv"
 LayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 
@@ -84,6 +84,8 @@ Alignment_RockSurface = "WORK/Ostroehre.RockSurface.R2.csv"  # JK ToDo: RockSurf
 
 alignment_df = pd.read_csv(AlignmentData)
 alignment_df = alignment_df.dropna(how = "all")  #delete row if only NA are present in row
+# truncate alignment_df to three decimals
+alignment_df = alignment_df.round(decimals=3)
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -92,49 +94,49 @@ alignment_df = alignment_df.dropna(how = "all")  #delete row if only NA are pres
 # ----------------------------------------------------------------------------------------------------------------
 
 layout_df = pd.read_csv(LayoutData)
+# truncate layout_df to three decimals
+layout_df = layout_df.round(decimals=3)
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# convert alignment_df["Station"] => alignment_df["StationReal"] 
-# result: alignment_Station_list,
+# convert alignment_df["Station"] => alignment_df["StationReal"] and similar for layout_df
+# result: alignment_Station_list, layout_Station_list
 #         alignment_df["StationReal"], layout_df["StationReal"]
-print "df header StationReal"
+print "creating df header StationReal"
 # ----------------------------------------------------------------------------------------------------------------
 
 alignment_Station_list = alignment_df["Station"].tolist()
-# check: len(alignment_Station_list)
+    # check: len(alignment_Station_list)
 
 alignment_df["StationReal"] = np.nan
 
 for n in range(0, len(alignment_Station_list)):
     station_sel = alignment_df.iloc[n]["Station"]
-    station_sel_real = float(station_sel.replace("+", ""))
-    alignment_df.iloc[n, alignment_df.columns.get_loc("StationReal")] = station_sel_real
+    station_real_sel = float(station_sel.replace("+",""))
+    alignment_df.iloc[n, alignment_df.columns.get_loc("StationReal")] = station_real_sel
     # alignment_df.columns.get_loc("StationReal") = 5
 
 # layout_df["Station"] => layout_df["StationReal"] 
 layout_Station_list = layout_df["Station"].tolist()
-# check: len(layout_Station_list)
+    # check: len(layout_Station_list)
 
 layout_df["StationReal"] = np.nan
 
 for n in range(0, len(layout_Station_list)):
     station_sel = layout_df.iloc[n]["Station"]
-    station_sel_real = float(station_sel.replace("+", ""))
+    station_real_sel = float(station_sel.replace("+",""))
     layout_df.iloc[n, layout_df.columns.get_loc("StationReal")] \
-        = station_sel_real
-    # alignment_df.columns.get_loc("StationReal") = 5
+        = station_real_sel
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# check if layout_df["StationReal"] exists in alignment_df["StationReal"]
-#   If it does not exist create a new Station in alignment_df
-# result: alignment_df with added Stations
+# check if every layout_df["StationReal"] exists in alignment_df["StationReal"]
+#   If it does not exist, create a new Station in alignment_df
+# result: alignment_StationReal_list, layout_StationReal_list
+#         alignment_df with added Stations
 print "adding Stations"
 # ----------------------------------------------------------------------------------------------------------------
 
-# list stations in alignment_df and layout_df
-# result: alignment_StationReal_list and layout_StationReal_list
 alignment_StationReal_list = alignment_df["StationReal"].tolist()
 layout_StationReal_list = layout_df["StationReal"].tolist()
 
@@ -155,40 +157,61 @@ for n in layout_StationReal_list:
     else:
         neighbour1_StationReal = max([i for i in alignment_StationReal_list if i < n]) 
         neighbour2_StationReal = min([i for i in alignment_StationReal_list if i > n])       
-        if n < neighbour1_StationReal + vicinity or n > neighbour2_StationReal + vicinity:
+        ####if n < neighbour1_StationReal + vicinity or n > neighbour2_StationReal + vicinity:      KLK: check
+        if n < neighbour1_StationReal + vicinity or n > neighbour2_StationReal - vicinity:
             pass
         else: 
             neighbour1 = alignment_df.loc[alignment_df["StationReal"]
                                           == neighbour1_StationReal,]
             neighbour2 = alignment_df.loc[alignment_df["StationReal"]
                                           == neighbour2_StationReal,]
-            delta_x_neighbour1and2 = abs(neighbour2.Easting.tolist()[0]-neighbour1.Easting.tolist()[0]) #delta x
-            delta_y_neighbour1and2 = abs(neighbour2.Northing.tolist()[0]-neighbour1.Northing.tolist()[0]) #delta y
-            length_neighbour1and2 = (delta_x_neighbour1and2**2 +delta_y_neighbour1and2**2)**(0.5) # L
-            length_neighbour1andNewPoint = n-neighbour1.StationReal.tolist()[0]
-            easting_newpoint_sel = neighbour2.Easting.tolist()[0] \
-                                 + ((delta_y_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
-            northing_newpoint_sel = neighbour2.Northing.tolist()[0] \
-                                  + ((delta_x_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
-            elevation_newpoint_sel = neighbour2.Elevation.tolist()[0] \
-                                   + ((delta_x_neighbour1and2*length_neighbour1andNewPoint)/length_neighbour1and2)
+            ####delta_x_neighbour1_2 = abs(neighbour2.Easting.tolist()[0] -neighbour1.Easting.tolist()[0])
+            ####delta_y_neighbour1_2 = abs(neighbour2.Northing.tolist()[0] -neighbour1.Northing.tolist()[0])
+            ####                                                                                  KLK: check
+            delta_x_neighbour1_2 = neighbour2.Easting.tolist()[0] -neighbour1.Easting.tolist()[0] #delta x
+            delta_y_neighbour1_2 = neighbour2.Northing.tolist()[0] -neighbour1.Northing.tolist()[0] #delta y
+            delta_z_neighbour1_2 = neighbour2.Elevation.tolist()[0] -neighbour1.Elevation.tolist()[0] #delta z
+            length_neighbour1_2 = (delta_x_neighbour1_2**2 +delta_y_neighbour1_2**2)**(0.5) # L
+            length_neighbour1_newpoint = n- neighbour1.StationReal.tolist()[0]
+            ####easting_newpoint_sel = neighbour2.Easting.tolist()[0] \
+            ####                     +((delta_y_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
+            ####northing_newpoint_sel = neighbour2.Northing.tolist()[0] \
+            ####                      +((delta_x_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
+            ####elevation_newpoint_sel = neighbour2.Elevation.tolist()[0] \
+            ####                       +((delta_x_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
+            ####                                                                                  KLK: check
+            easting_newpoint_sel = neighbour1.Easting.tolist()[0] \
+                                 +((delta_x_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
+            northing_newpoint_sel = neighbour1.Northing.tolist()[0] \
+                                  +((delta_y_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
+            elevation_newpoint_sel = neighbour1.Elevation.tolist()[0] \
+                                   +((delta_z_neighbour1_2*length_neighbour1_newpoint)/length_neighbour1_2)
             easting_newpoint.append(easting_newpoint_sel)
             northing_newpoint.append(northing_newpoint_sel)
             elevation_newpoint.append(elevation_newpoint_sel)
             station_real.append(n)
+            print neighbour1
+            print neighbour2
+            print "station_real", n
+            print "easting_newpoint_sel", easting_newpoint_sel
+            print "northing_newpoint_sel", northing_newpoint_sel
+            print "elevation_newpoint_sel", elevation_newpoint_sel
+            # this procedure must be tested for all combinations of ascending/descending
+            #   Northing, Easting and Elevation --> should be OK
+            #   for descending Stationing --> needs fixing                                          JK ToDo
             Station_sel = layout_df.loc[layout_df['StationReal']
                                                   == n, 'Station'] 
             station.append(Station_sel.tolist()[0])
            
-NewStation_df = pd.DataFrame({"Easting": easting_newpoint, "Northing": northing_newpoint,
+newStation_df = pd.DataFrame({"Easting": easting_newpoint, "Northing": northing_newpoint,
                               "Elevation": elevation_newpoint, "StationReal": station_real,
                               "Station": station})
     # check len(alignment_df)
-    # check len(NewStation_df)
+    # check len(newStation_df)
 
-# Contatenate alignment_df with NewStation_df
+# Contatenate alignment_df with newStation_df
 # result: alignment_df
-frames = [alignment_df, NewStation_df]
+frames = [alignment_df, newStation_df]
 alignment_df = pd.concat(frames)
     # check: len(alignment_df)
     # check: alignment_df.tail()
