@@ -68,7 +68,7 @@ LayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 TunnelExcavationData = "WORK/Ostroehre.TunnelExcavationData.R2.csv"
 # headers: Station, Easting, Northing, Elevation, DTM, RockSurface, StationReal, RockCover,
 #          WBScode, WorkType, ExcavationType, ProfileType, SectionArea, Description,
-#          BoreClass, SupportClass, DisposalClass, StationInterval, ExcvationVolume, DisposalVolume
+#          BoreClass, SupportClass, DisposalClass, StationInterval, ExcavationVolume, DisposalVolume
 Alignment_SHP ='WORK/Ostroehre.Alignment.R2.shp'
 # temporary data
 Alignment_DTM = "WORK/Ostroehre.Terrain.R2.csv"
@@ -83,7 +83,8 @@ Alignment_RockSurface = "WORK/Ostroehre.RockSurface.R2.csv"  # JK ToDo: RockSurf
 # ----------------------------------------------------------------------------------------------------------------
 
 alignment_df = pd.read_csv(AlignmentData)
-alignment_df = alignment_df.dropna(how = "all")  #delete row if only NA are present in row
+#delete row if only NA are present in row
+alignment_df = alignment_df.dropna(how = "all")
 # truncate alignment_df to three decimals
 alignment_df = alignment_df.round(decimals=3)
 
@@ -190,12 +191,12 @@ for n in layout_StationReal_list:
             northing_newpoint.append(northing_newpoint_sel)
             elevation_newpoint.append(elevation_newpoint_sel)
             station_real.append(n)
-            print neighbour1
-            print neighbour2
-            print "station_real", n
-            print "easting_newpoint_sel", easting_newpoint_sel
-            print "northing_newpoint_sel", northing_newpoint_sel
-            print "elevation_newpoint_sel", elevation_newpoint_sel
+            print "    ", neighbour1
+            print "    ", neighbour2
+            print "    station_real", n
+            print "    easting_newpoint_sel", easting_newpoint_sel
+            print "    northing_newpoint_sel", northing_newpoint_sel
+            print "    elevation_newpoint_sel", elevation_newpoint_sel
             # this procedure must be tested for all combinations of ascending/descending
             #   Northing, Easting and Elevation --> should be OK
             #   for descending Stationing --> needs fixing                                          JK ToDo
@@ -414,8 +415,8 @@ bore_class=BoreClass()
 bore_class.bc1()
 bore_class.bc2()
 bore_class.bc3()
-# check: TunnExcvDF["BoreClass"].value_counts()  # equals 805+188+60 for Ostroehre
-# check: TunnExcvDF["ExcavationType"].value_counts() 
+print TunnExcvDF["BoreClass"].value_counts()  # equals 805+188+60 for Ostroehre
+print TunnExcvDF["ExcavationType"].value_counts() 
 
 ##th =13.0   #Tunnel height
 ##  BC1
@@ -462,7 +463,7 @@ print 'calcuating volume'
 
 # initialize interval length (StationInterval field)
 TunnExcvDF["StationInterval"] = np.nan
-TunnExcvDF["ExcvationVolume"] = np.nan
+TunnExcvDF["ExcavationVolume"] = np.nan
 
 # Calculate "StationInterval", "Area1_mean_dist" and "Area2_mean_dist"
 n = 0
@@ -474,9 +475,57 @@ for i in range(len(TunnExcvDF.index) -1):
     TunnExcvDF["StationInterval"].iat[n] = ((TunnExcvDF["Easting"].iat[nn] -TunnExcvDF["Easting"].iat[n])**2 
         +(TunnExcvDF["Northing"].iat[nn] -TunnExcvDF["Northing"].iat[n])**2 
         +(TunnExcvDF["Elevation"].iat[nn] -TunnExcvDF["Elevation"].iat[n])**2 )**(0.5)
-    TunnExcvDF["ExcvationVolume"].iat[n] = TunnExcvDF["SectionArea"].iat[n] * TunnExcvDF["StationInterval"].iat[n]
+    TunnExcvDF["ExcavationVolume"].iat[n] = TunnExcvDF["SectionArea"].iat[n] * TunnExcvDF["StationInterval"].iat[n]
     n = n+1
 # check:
-#    print TunnExcvDF.loc[:,["Station","ExcavationType","StationInterval","ExcvationVolume"]].to_string()
+#    print TunnExcvDF.loc[:,["Station","ExcavationType","StationInterval","ExcavationVolume"]].to_string()
 
 TunnExcvDF.to_csv(TunnelExcavationData, sep=",")
+
+
+BoQList= [("WBS", [ "111a", "111a", "111b", "111b", "111b",  "111b", "111b", "111b", "111a", "111a"]), 
+          ("WorkType", ["UEX"]*10),
+          ("PayItem", ["MC2", "SC5", "BC1", "BC2", "BC3", "SCT", "MC5", "MC3","MC2", "SC5"]),
+          ("ExcavationType", ["MUL", "MUl", "TBM", "TBM", "TBM","TBM", "TBM", "TBM", "MUL", "MUl"]),
+          ("StationFrom", ["NaN"]*10),
+          ("StationTo",["NaN"]*10),
+          ("Quantity", ["NaN"]*10),
+          ("Unit", ["m3"]*10),
+          ]
+
+BoQDf =  pd.DataFrame.from_items(BoQList)
+
+WBS_BoQList = BoQDf.WBS.tolist()
+PayItem_BoQList = BoQDf.PayItem.tolist()
+
+####for n in [0,1,8,9]:
+####    TunnExcvDF.loc[TunnExcvDF["WBScode"] == WBS_BoQList[n]
+####                   & TunnExcvDF["DisposalClass"] == PayItem_BoQList[n],"StationReal"]
+
+
+
+# testinig of BoQ printing  JK    
+for i in TunnExcvDF["WBScode"].unique():
+    for j in TunnExcvDF["ExcavationType"].unique():
+            for k in TunnExcvDF["BoreClass"].unique():
+                # if DF record with i, j exists:
+                if ((TunnExcvDF["WBScode"] == i)
+                    & (TunnExcvDF["ExcavationType"] == j)
+                    & (TunnExcvDF["BoreClass"] == k)).any():
+                    sum=TunnExcvDF.loc[
+                        ((TunnExcvDF["WBScode"] == i)
+                         & (TunnExcvDF["ExcavationType"] == j)
+                         & (TunnExcvDF["BoreClass"] == k)),"ExcavationVolume"].sum()
+                    print i, j, k, sum
+            for k in TunnExcvDF["SupportClass"].unique():
+                # if DF record with i, j exists:
+                if ((TunnExcvDF["WBScode"] == i)
+                    & (TunnExcvDF["ExcavationType"] == j)
+                    & (TunnExcvDF["SupportClass"] == k)).any():                    
+                    sum=TunnExcvDF.loc[
+                        ((TunnExcvDF["WBScode"] == i)
+                         & (TunnExcvDF["ExcavationType"] == j)
+                         & (TunnExcvDF["SupportClass"] == k)),"ExcavationVolume"].sum()
+                    print i, j, k, sum
+# check:
+print TunnExcvDF.loc[TunnExcvDF["ExcavationType"] == "TBM", "ExcavationVolume"].sum()
