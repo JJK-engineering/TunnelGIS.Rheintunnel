@@ -62,6 +62,35 @@ LayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 
 
 # ----------------------------------------------------------------------------------------------------------------
+# define Bore Classes
+#   define Bore Classes as class, to separate definition of methods from execution
+#   class method is used as a modifier to the TunnelExcavationData (dataframe) class.
+# ----------------------------------------------------------------------------------------------------------------
+
+tunn_h =13.0   # define tunnel height
+volume_unit='m3'  # unit to be used for volume calculation and reporting
+
+class BoreClass:
+    """Determine Bore Class for TBM tunnels"""
+    # BC1 - tunnel predominantly in soil
+    def bc1(self):
+        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
+        (TunnExcvDF["RockSurface"] <= TunnExcvDF["Elevation"] -tunn_h*0.25),"BoreClass"] \
+        ="BC1"
+    # BC2 - tunnel with mixed face
+    def bc2(self):
+        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
+        (TunnExcvDF["RockSurface"] > TunnExcvDF["Elevation"] -tunn_h*0.25) & 
+        (TunnExcvDF["RockSurface"] < TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        = "BC2"
+    # BC3 - tunnel inf rock
+    def bc3(self):
+        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
+        (TunnExcvDF["RockSurface"] >= TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
+        = "BC3"
+
+
+# ----------------------------------------------------------------------------------------------------------------
 # define output files
 # ----------------------------------------------------------------------------------------------------------------
 
@@ -70,10 +99,10 @@ TunnelExcavationData = "WORK/Ostroehre.TunnelExcavationData.R2.csv"
 #          WBScode, WorkType, ExcavationType, ProfileType, SectionArea, Description,
 #          BoreClass, SupportClass, DisposalClass, StationInterval, ExcavationVolume, DisposalVolume
 Alignment_SHP ='WORK/Ostroehre.Alignment.R2.shp'
+BoQ = "WORK/Ostroehre.TunnelBoQdata.R2.csv"
 # temporary data
 Alignment_DTM = "WORK/Ostroehre.Terrain.R2.csv"
 Alignment_RockSurface = "WORK/Ostroehre.RockSurface.R2.csv"  # JK ToDo: RockSurface?
-
 
 # ----------------------------------------------------------------------------------------------------------------
 # create alignment_df (dataframe) from .csv
@@ -85,7 +114,7 @@ Alignment_RockSurface = "WORK/Ostroehre.RockSurface.R2.csv"  # JK ToDo: RockSurf
 alignment_df = pd.read_csv(AlignmentData)
 #delete row if only NA are present in row
 alignment_df = alignment_df.dropna(how = "all")
-# truncate alignment_df to three decimals
+# round alignment_df to three decimals
 alignment_df = alignment_df.round(decimals=3)
 
 
@@ -95,7 +124,7 @@ alignment_df = alignment_df.round(decimals=3)
 # ----------------------------------------------------------------------------------------------------------------
 
 layout_df = pd.read_csv(LayoutData)
-# truncate layout_df to three decimals
+# round layout_df to three decimals
 layout_df = layout_df.round(decimals=3)
 
 
@@ -291,7 +320,7 @@ Alignment_RockSurface_df_sel = Alignment_RockSurface_df_rename.loc[
 
 # ----------------------------------------------------------------------------------------------------------------
 # join grass results using Panda
-#    merge handles floats as keys inconsistently, truncate df's to three decimals before merge 
+#    merge handles floats as keys inconsistently, round df's to three decimals before merge 
 # result: merge_final
 print 'merge_final'
 # ----------------------------------------------------------------------------------------------------------------
@@ -348,6 +377,7 @@ TunnExcvDF["ExcavationType"] = np.nan
 TunnExcvDF["ProfileType"] = np.nan
 TunnExcvDF["SectionArea"] = np.nan
 TunnExcvDF["Description"] = np.nan
+TunnExcvDF["Unit"] = volume_unit
 
 for n in range(0, len(layout_StationReal_list)):
     nn = n+1 
@@ -375,7 +405,6 @@ for n in range(0, len(layout_StationReal_list)):
     
 # ----------------------------------------------------------------------------------------------------------------
 # calculate "BoreClass", "SupportClass" and "DisposalClass"
-#   define Tunnel height and BoreClass rules at start of procedure, for easy modification        JK ToDo 
 # result: TunnExcvDF["BoreClass"], TunnExcvDF["SupportClass"], TunnExcvDF["DisposalClass"]
 print 'calculating BoreClass, SupportClass and DisposalClass'
 # ----------------------------------------------------------------------------------------------------------------
@@ -383,31 +412,6 @@ print 'calculating BoreClass, SupportClass and DisposalClass'
 TunnExcvDF["BoreClass"]= np.nan
 TunnExcvDF["SupportClass"]= np.nan
 TunnExcvDF["DisposalClass"]= np.nan
-
-# define BoreClass as class, to separate definition of methods from execution
-#   This makes it possible to define the BoreClass methods outside of this routine (e.g. at start of script).
-#   Class method is used as a modifier to the TunnelExcavationData (dataframe) class.
-
-tunn_h =13.0   # define tunnel height
-
-class BoreClass:
-    """Determine Bore Class for TBM tunnels"""
-    # BC1 - tunnel predominantly in soil
-    def bc1(self):
-        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
-        (TunnExcvDF["RockSurface"] <= TunnExcvDF["Elevation"] -tunn_h*0.25),"BoreClass"] \
-        ="BC1"
-    # BC2 - tunnel with mixed face
-    def bc2(self):
-        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & 
-        (TunnExcvDF["RockSurface"] > TunnExcvDF["Elevation"] -tunn_h*0.25) & 
-        (TunnExcvDF["RockSurface"] < TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
-        = "BC2"
-    # BC3 - tunnel inf rock
-    def bc3(self):
-        TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-        (TunnExcvDF["RockSurface"] >= TunnExcvDF["Elevation"] +tunn_h/2.0 +1.5),"BoreClass"] \
-        = "BC3"
 
 # instantiate an instance of BoreClass
 bore_class=BoreClass()
@@ -417,18 +421,6 @@ bore_class.bc2()
 bore_class.bc3()
 print TunnExcvDF["BoreClass"].value_counts()  # equals 805+188+60 for Ostroehre
 print TunnExcvDF["ExcavationType"].value_counts() 
-
-##th =13.0   #Tunnel height
-##  BC1
-##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] <= TunnExcvDF["Elevation"] -th*0.25),"BoreClass"] ="BC1"     
-#  BC2   
-##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] > TunnExcvDF["Elevation"] -th*0.25) & 
-##    (TunnExcvDF["RockSurface"] < TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC2"     
-#  BC3        
-##TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "TBM") & \
-##    (TunnExcvDF["RockSurface"] >= TunnExcvDF["Elevation"]+ th/2.0 +1.5), "BoreClass"] = "BC3"
 
 # Support Class                                                             # JK ToDo: define SC's as Class
 #  SCT
@@ -457,8 +449,8 @@ TunnExcvDF.loc[(TunnExcvDF["ExcavationType"] == "MUL"), \
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# calculate volume of tunnel between two axis points
-print 'calcuating volume'
+# calculate excavation volume of tunnel between two axis points
+print 'calcuating excavation volume'
 # ----------------------------------------------------------------------------------------------------------------
 
 # initialize interval length (StationInterval field)
@@ -478,54 +470,125 @@ for i in range(len(TunnExcvDF.index) -1):
     TunnExcvDF["ExcavationVolume"].iat[n] = TunnExcvDF["SectionArea"].iat[n] * TunnExcvDF["StationInterval"].iat[n]
     n = n+1
 # check:
-#    print TunnExcvDF.loc[:,["Station","ExcavationType","StationInterval","ExcavationVolume"]].to_string()
-
-TunnExcvDF.to_csv(TunnelExcavationData, sep=",")
+#    print TunnExcvDF.loc[:,["Station","ExcavationType","StationInterval","ExcavationVolume"]]
 
 
-BoQList= [("WBS", [ "111a", "111a", "111b", "111b", "111b",  "111b", "111b", "111b", "111a", "111a"]), 
-          ("WorkType", ["UEX"]*10),
-          ("PayItem", ["MC2", "SC5", "BC1", "BC2", "BC3", "SCT", "MC5", "MC3","MC2", "SC5"]),
-          ("ExcavationType", ["MUL", "MUl", "TBM", "TBM", "TBM","TBM", "TBM", "TBM", "MUL", "MUl"]),
-          ("StationFrom", ["NaN"]*10),
-          ("StationTo",["NaN"]*10),
-          ("Quantity", ["NaN"]*10),
-          ("Unit", ["m3"]*10),
-          ]
+# ----------------------------------------------------------------------------------------------------------------
+# calculate disposal volume of tunnel between two axis points
+print 'calcuating disposal volume'
+# result: file TunnelExcavationData as .csv)
+# ----------------------------------------------------------------------------------------------------------------
 
-BoQDf =  pd.DataFrame.from_items(BoQList)
+def disposal_volume(ExcavationVolume, DisposalClass):
+    #calculate Disposal Volumes based on Disposal Class
+    DisposalVolume=np.nan
+    if DisposalClass=="MC2":
+        DisposalVolume=1.3*ExcavationVolume
+    elif DisposalClass=="MC3":
+        DisposalVolume=1.5*ExcavationVolume 
+    elif DisposalClass=="MC5":
+        DisposalVolume=1.3*ExcavationVolume
+    #else:
+        #print "unknown disposal class"
+    return DisposalVolume
 
-WBS_BoQList = BoQDf.WBS.tolist()
-PayItem_BoQList = BoQDf.PayItem.tolist()
+TunnExcvDF["DisposalVolume"] = np.nan
+n = 0
+for i in range(len(TunnExcvDF.index) -1):
+    TunnExcvDF["DisposalVolume"].iat[n] = (
+        disposal_volume(TunnExcvDF["ExcavationVolume"].iat[n],TunnExcvDF["DisposalClass"].iat[n]) )
+    n = n+1
+# check:
+#  print TunnExcvDF.loc[:,["Station","DisposalType","ExcavationVolume","DisposalVolume"]]
 
-####for n in [0,1,8,9]:
-####    TunnExcvDF.loc[TunnExcvDF["WBScode"] == WBS_BoQList[n]
-####                   & TunnExcvDF["DisposalClass"] == PayItem_BoQList[n],"StationReal"]
+TunnExcvDF.to_csv(TunnelExcavationData, sep=",", na_rep="NaN")
 
 
+# ----------------------------------------------------------------------------------------------------------------
+# write BoQ to file
+# results: BoQ_df and BoQ as .csv
+print 'creating BoQ'
+# ----------------------------------------------------------------------------------------------------------------
+# replace print with write to file                                             ToDo JK
 
-# testinig of BoQ printing  JK    
+# initialize a BoQ_list
+BoQ_list_headers= ["WBS","WorkType","ExcavationType","StationFrom","StationTo","PayItem","Quantity","Unit"]
+BoQ_list_values=[]
+
+# find combinations of WBScode, ExcavationType and [BoreClass | Support Class | Disposal Class that exist
+# calculate excavation volume for each combination
 for i in TunnExcvDF["WBScode"].unique():
     for j in TunnExcvDF["ExcavationType"].unique():
-            for k in TunnExcvDF["BoreClass"].unique():
-                # if DF record with i, j exists:
-                if ((TunnExcvDF["WBScode"] == i)
-                    & (TunnExcvDF["ExcavationType"] == j)
-                    & (TunnExcvDF["BoreClass"] == k)).any():
-                    sum=TunnExcvDF.loc[
-                        ((TunnExcvDF["WBScode"] == i)
-                         & (TunnExcvDF["ExcavationType"] == j)
-                         & (TunnExcvDF["BoreClass"] == k)),"ExcavationVolume"].sum()
-                    print i, j, k, sum
-            for k in TunnExcvDF["SupportClass"].unique():
-                # if DF record with i, j exists:
-                if ((TunnExcvDF["WBScode"] == i)
-                    & (TunnExcvDF["ExcavationType"] == j)
-                    & (TunnExcvDF["SupportClass"] == k)).any():                    
-                    sum=TunnExcvDF.loc[
-                        ((TunnExcvDF["WBScode"] == i)
-                         & (TunnExcvDF["ExcavationType"] == j)
-                         & (TunnExcvDF["SupportClass"] == k)),"ExcavationVolume"].sum()
-                    print i, j, k, sum
+        if ((TunnExcvDF["WBScode"] == i)
+             & (TunnExcvDF["ExcavationType"] == j)).any():
+            work_type = (TunnExcvDF.loc[
+                ((TunnExcvDF["WBScode"] == i)
+                & (TunnExcvDF["ExcavationType"] == j)),"WorkType"]).unique()[0]
+        for k in TunnExcvDF["BoreClass"].unique():
+            # if DF record with i, j, k (as Bore Class) exists:
+            if ((TunnExcvDF["WBScode"] == i)
+                & (TunnExcvDF["ExcavationType"] == j)
+                & (TunnExcvDF["BoreClass"] == k)).any():
+                start_station = min(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                end_station = max(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                #need 'Station +1' because we are going From: To: along alignment
+                #TunnExcvDF.loc[(TunnExcvDF["Station"] == end_station),"Station"].values[0]    ToDo Note JK
+                end_station_index=TunnExcvDF.index.get_loc(
+                    TunnExcvDF.loc[(TunnExcvDF["Station"] == end_station),"Station"].index[0]) +1
+                end_station=TunnExcvDF.iloc[end_station_index,TunnExcvDF.columns.get_loc("Station")]
+                volume_sum=TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)
+                     & (TunnExcvDF["BoreClass"] == k)),"ExcavationVolume"].sum()
+                BoQ_list_values.append((i,work_type,j,start_station,end_station,k,volume_sum,volume_unit))
+                print i, work_type, j, start_station, end_station, k, volume_sum, volume_unit
+        for k in TunnExcvDF["SupportClass"].unique():
+            # if DF record with i, j, k (as Support Class) exists:
+            if ((TunnExcvDF["WBScode"] == i)
+                & (TunnExcvDF["ExcavationType"] == j)
+                & (TunnExcvDF["SupportClass"] == k)).any():                    
+                start_station = min(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                end_station = max(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                end_station_index=TunnExcvDF.index.get_loc(
+                    TunnExcvDF.loc[(TunnExcvDF["Station"] == end_station),"Station"].index[0]) +1
+                end_station=TunnExcvDF.iloc[end_station_index,TunnExcvDF.columns.get_loc("Station")]
+                volume_sum=TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)
+                     & (TunnExcvDF["SupportClass"] == k)),"ExcavationVolume"].sum()
+                BoQ_list_values.append((i,work_type,j,start_station,end_station,k,volume_sum,volume_unit))
+                print i, work_type, j, start_station, end_station, k, volume_sum, volume_unit
+        for k in TunnExcvDF["DisposalClass"].unique():
+            # if DF record with i, j, k (as Support Class) exists:
+            if ((TunnExcvDF["WBScode"] == i)
+                & (TunnExcvDF["ExcavationType"] == j)
+                & (TunnExcvDF["DisposalClass"] == k)).any():                    
+                start_station = min(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                end_station = max(TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)),"Station"])
+                end_station_index=TunnExcvDF.index.get_loc(
+                    TunnExcvDF.loc[(TunnExcvDF["Station"] == end_station),"Station"].index[0]) +1
+                end_station=TunnExcvDF.iloc[end_station_index,TunnExcvDF.columns.get_loc("Station")]
+                volume_sum=TunnExcvDF.loc[
+                    ((TunnExcvDF["WBScode"] == i)
+                     & (TunnExcvDF["ExcavationType"] == j)
+                     & (TunnExcvDF["DisposalClass"] == k)),"DisposalVolume"].sum()
+                BoQ_list_values.append((i,work_type,j,start_station,end_station,k,volume_sum,volume_unit))
+                print i, work_type, j, start_station, end_station, k, volume_sum, volume_unit
 # check:
-print TunnExcvDF.loc[TunnExcvDF["ExcavationType"] == "TBM", "ExcavationVolume"].sum()
+#print TunnExcvDF.loc[TunnExcvDF["ExcavationType"] == "TBM", "ExcavationVolume"].sum()
+#print TunnExcvDF.loc[TunnExcvDF["ExcavationType"] == "TBM", "DisposalVolume"].sum()
+
+BoQ_df =  pd.DataFrame(BoQ_list_values, columns=BoQ_list_headers).round(decimals=3)
+BoQ_df.to_csv(BoQ, sep=",", na_rep="NaN")
