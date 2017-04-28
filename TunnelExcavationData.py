@@ -66,6 +66,7 @@ LayoutData = "WORK/Ostroehre.TunnelLayoutData.R2.csv"
 #   define Bore Classes as class, to separate definition of methods from execution
 #   class method is used as a modifier to the TunnelExcavationData (dataframe) class.
 # ----------------------------------------------------------------------------------------------------------------
+# better to add mtethods .bc1, .bc2, .bc3 to TunnExcvDf ??
 
 tunn_h =13.0   # define tunnel height
 volume_unit='m3'  # unit to be used for volume calculation and reporting
@@ -479,6 +480,7 @@ print 'calcuating disposal volume'
 # result: file TunnelExcavationData as .csv)
 # ----------------------------------------------------------------------------------------------------------------
 
+# mv to beginning of file                                                        JK ToDo
 def disposal_volume(ExcavationVolume, DisposalClass):
     #calculate Disposal Volumes based on Disposal Class
     DisposalVolume=np.nan
@@ -505,7 +507,7 @@ TunnExcvDF.to_csv(TunnelExcavationData, sep=",", na_rep="NaN")
 
 
 # ----------------------------------------------------------------------------------------------------------------
-# write BoQ to file
+# create BoQ and write to file
 # results: BoQ_df and BoQ as .csv
 print 'creating BoQ'
 # ----------------------------------------------------------------------------------------------------------------
