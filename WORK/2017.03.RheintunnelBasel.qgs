@@ -5,12 +5,12 @@
   <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
-    <layer-tree-layer expanded="1" providerKey="delimitedtext" checked="Qt::Checked" id="Settlement20170424152154949" source="file:///home/kaelin_joseph/TunnelGIS.Rheintunnel/Settlement.csv?type=csv&amp;delimiter=,;&amp;xField=C.%20Normal%20Vector%20x&amp;yField=D.%20Normal%20Vector%20y&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="Damage Class">
+    <layer-tree-layer expanded="0" providerKey="delimitedtext" checked="Qt::Unchecked" id="Settlement20170424152154949" source="file:///home/kaelin_joseph/TunnelGIS.Rheintunnel/Settlement.csv?type=csv&amp;delimiter=,;&amp;xField=C.%20Normal%20Vector%20x&amp;yField=D.%20Normal%20Vector%20y&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="Damage Class">
       <customproperties>
         <property key="overview" value="1"/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="delimitedtext" checked="Qt::Unchecked" id="Settlement20170424084322261" source="file:///home/kaelin_joseph/TunnelGIS.Rheintunnel/Settlement.csv?type=csv&amp;delimiter=,;&amp;xField=C.%20Normal%20Vector%20x&amp;yField=D.%20Normal%20Vector%20y&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="Settlement [mm]">
+    <layer-tree-layer expanded="0" providerKey="delimitedtext" checked="Qt::Unchecked" id="Settlement20170424084322261" source="file:///home/kaelin_joseph/TunnelGIS.Rheintunnel/Settlement.csv?type=csv&amp;delimiter=,;&amp;xField=C.%20Normal%20Vector%20x&amp;yField=D.%20Normal%20Vector%20y&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="Settlement [mm]">
       <customproperties>
         <property key="overview" value="0"/>
       </customproperties>
@@ -39,6 +39,15 @@
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="test_terrain20170428143811452" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/test-terrain.shp" name="test-terrain">
       <customproperties/>
     </layer-tree-layer>
+    <layer-tree-layer expanded="0" providerKey="gdal" checked="Qt::Unchecked" id="swissALTI3_test20170429111621381" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissALTI3-test.tif" name="swissALTI3-test">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer expanded="1" providerKey="gdal" checked="Qt::Checked" id="swissALTI3Dgrass20170429184633777" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissALTI3Dgrass.dem" name="swissALTI3Dgrass">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer expanded="1" providerKey="grassraster" checked="Qt::Checked" id="swissALTI3Dgrass20170429183543263" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata/Rheintunnel/isohypsen/cellhd/swissALTI3Dgrass" name="swissALTI3Dgrass">
+      <customproperties/>
+    </layer-tree-layer>
     <layer-tree-layer expanded="0" providerKey="gdal" checked="Qt::Unchecked" id="swissALTI3D_20170303191726931" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissalti3dgeotifflv03-5m/swissALTI3D_.tif" name="swissALTI3D_">
       <customproperties/>
     </layer-tree-layer>
@@ -56,10 +65,10 @@
   <mapcanvas>
     <units>meters</units>
     <extent>
-      <xmin>2611185.45705600641667843</xmin>
-      <ymin>1268326.74848667345941067</ymin>
-      <xmax>2612868.81962580792605877</xmax>
-      <ymax>1269511.62100163614377379</ymax>
+      <xmin>2610566.179026341997087</xmin>
+      <ymin>1266685.56584458891302347</ymin>
+      <xmax>2613932.90416594501584768</xmax>
+      <ymax>1269055.31087451428174973</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -77,68 +86,92 @@
     </destinationsrs>
     <rendermaptile>0</rendermaptile>
     <layer_coordinate_transform_info>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143811452"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR2fromCSV20170325170141752"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429112447582"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Sampled20170320163626891"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felsisohypsen_raster20170304190809023"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170424084322261"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="TunnelVariables20170322164915650"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317180215874"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319140108574"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_Alignment_R220170423135313687"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_Alignment_R220170416094258582"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_02_23_Tunnelachsen_Rheintunnel20170325110152014"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319140439243"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320214044535"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170316205951827"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320213753041"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20170318114411614"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170424152154949"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test20170319145009088"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170423135434111"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_20170303191726931"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="memory_20170428144949744"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="tunnel_test20170319145653184"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Point_Felstiefe20170313145756584"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Simplified20170428145314479"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="PointsOstrohrR120170317181938531"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170304190346248"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319135539634"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_Alignment_R220170416124202344"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143811452"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D20170416123730212"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170318111236032"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_shp20170416123547087"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Stadtplan_schwarz_weiss_5000_1000020170303192248807"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317175638993"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320213949453"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_R1_entities_LineString20170306204538910"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen_entities_LineString_Point20170313143926131"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Line20170318102236894"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317180447661"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_AlignmentData_R220170416093853479"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_LineString20170428144611705"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170304191122219"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen20170303191345600"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="ostrohr_r120170317175142288"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_TIN20170416134643203"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20170318110431822"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felsisohypsen_contours_raster20170303191532944"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317180215874"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen_entities_LineString_Point20170313143904923"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement_LS20170423133140289"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143824056"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170319110931969"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_Alignment_R220170416125639455"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319135627867"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr20170318104351258"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR220170325110753769"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR1_csv20170320162001875"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen20170303192525025"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_R1_entities_LineString20170306204923641"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143817108"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319150446443"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_Polygon20170428144616455"/>
-      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170317182350355"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429111007971"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3Dgrass20170429184633777"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319150630705"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319140439243"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317175638993"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_20170303191726931"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114149627"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felsisohypsen_contours_raster20170303191532944"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR220170325110753769"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429112552200"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="memory_20170428144949744"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Stadtplan_schwarz_weiss_5000_1000020170303192248807"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170424084322261"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="test20170429113556375"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143824056"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319140108574"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_Alignment_R220170416125639455"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170424152154949"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319135539634"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_R1_entities_LineString20170306204538910"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_AlignmentData_R220170416093853479"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Simplified20170428153838381"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen_entities_LineString_Point20170313143926131"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="ostrohr_r120170317175142288"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170319110931969"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test20170319145009088"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_Alignment_R220170416124202344"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen20170303192525025"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_Polygon20170428144616455"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_LineString20170428144611705"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170317182350355"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_02_23_Tunnelachsen_Rheintunnel20170325110152014"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Simplified20170428145314479"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114131648"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test220170429183028870"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_Alignment_R220170416094258582"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr20170318104351258"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3Dgrass20170429183543263"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Line20170318102236894"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test220170429182820609"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="tunnel_test20170319145653184"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429112659263"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429113131040"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="test20170429113604401"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostroehre_Alignment_R220170423135313687"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319150446443"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320214044535"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_03_19_OstrohrR120170319135627867"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114944170"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR2fromCSV20170325170141752"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR120170317180447661"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain20170428143817108"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320213753041"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20170318110431822"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429110501543"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="TunnelVariables20170322164915650"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170320213949453"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement_LS20170423133140289"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_01_Rheintunnel_Linienführung_E3_jjk_Achsen20170303191345600"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test220170429183016193"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="OstrohrR1_csv20170320162001875"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_TIN20170416134643203"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429112601067"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114021063"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429111139435"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felsisohypsen_raster20170304190809023"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170304190346248"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114814179"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20170318114411614"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_shp20170416123547087"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Ostrohr_R1_entities_LineString20170306204923641"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Settlement20170423135434111"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429111621381"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Point_Felstiefe20170313145756584"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="PointsOstrohrR120170317181938531"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Felstiefe20170304191122219"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170318111236032"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170316205951827"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429112506871"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114053649"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
   <layer-tree-canvas>
@@ -157,16 +190,19 @@
       <item>Settlement20170424084322261</item>
       <item>Settlement20170424152154949</item>
       <item>test_terrain20170428143811452</item>
+      <item>swissALTI3_test20170429111621381</item>
+      <item>swissALTI3Dgrass20170429183543263</item>
+      <item>swissALTI3Dgrass20170429184633777</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Damage Class" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="1" layerid="Settlement20170424152154949" visible="1"/>
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Damage Class" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
+        <legendlayerfile isInOverview="1" layerid="Settlement20170424152154949" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="Settlement [mm]" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Settlement [mm]" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="Settlement20170424084322261" visible="0"/>
       </filegroup>
     </legendlayer>
@@ -208,6 +244,21 @@
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="test-terrain" showFeatureCount="0">
       <filegroup open="true" hidden="false">
         <legendlayerfile isInOverview="0" layerid="test_terrain20170428143811452" visible="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="swissALTI3-test" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="swissALTI3_test20170429111621381" visible="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="swissALTI3Dgrass" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="swissALTI3Dgrass20170429184633777" visible="1"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="swissALTI3Dgrass" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="swissALTI3Dgrass20170429183543263" visible="1"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="swissALTI3D_" showFeatureCount="0">
@@ -3498,6 +3549,166 @@ def my_form_open(dialog, layer, feature):
       </defaults>
       <previewExpression></previewExpression>
     </maplayer>
+    <maplayer minimumScale="inf" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>2610125</xmin>
+        <ymin>1265135</ymin>
+        <xmax>2615470</xmax>
+        <ymax>1270040</ymax>
+      </extent>
+      <id>swissALTI3Dgrass20170429183543263</id>
+      <datasource>./grassdata/Rheintunnel/isohypsen/cellhd/swissALTI3Dgrass</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <timestamp>2017-04-29T18:35:41</timestamp>
+      <layername>swissALTI3Dgrass</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>47</srsid>
+          <srid>2056</srid>
+          <authid>EPSG:2056</authid>
+          <description>CH1903+ / LV95</description>
+          <projectionacronym>somerc</projectionacronym>
+          <ellipsoidacronym>bessel</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Value"/>
+      </customproperties>
+      <provider>grassraster</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="1"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer opacity="1" alphaBand="0" classificationMax="270" classificationMinMaxOrigin="User" band="1" classificationMin="230" type="singlebandpseudocolor">
+          <rasterTransparency/>
+          <rastershader>
+            <colorrampshader colorRampType="INTERPOLATED" clip="0">
+              <item alpha="255" value="230" label="230" color="#d7191c"/>
+              <item alpha="255" value="240" label="240" color="#fdae61"/>
+              <item alpha="255" value="250" label="250" color="#ffffbf"/>
+              <item alpha="255" value="260" label="260" color="#abdda4"/>
+              <item alpha="255" value="270" label="270" color="#2b83ba"/>
+            </colorrampshader>
+          </rastershader>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer minimumScale="inf" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>2603510</xmin>
+        <ymin>1260650</ymin>
+        <xmax>2624270</xmax>
+        <ymax>1274890</ymax>
+      </extent>
+      <id>swissALTI3Dgrass20170429184633777</id>
+      <datasource>./swissALTI3Dgrass.dem</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>swissALTI3Dgrass</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>47</srsid>
+          <srid>2056</srid>
+          <authid>EPSG:2056</authid>
+          <description>CH1903+ / LV95</description>
+          <projectionacronym>somerc</projectionacronym>
+          <ellipsoidacronym>bessel</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Value"/>
+      </customproperties>
+      <provider>gdal</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="1"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer opacity="1" alphaBand="0" classificationMax="323.226" classificationMinMaxOrigin="CumulativeCutFullExtentEstimated" band="1" classificationMin="244.994" type="singlebandpseudocolor">
+          <rasterTransparency/>
+          <rastershader>
+            <colorrampshader colorRampType="INTERPOLATED" clip="0"/>
+          </rastershader>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer minimumScale="inf" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>2603510</xmin>
+        <ymin>1260650</ymin>
+        <xmax>2624270</xmax>
+        <ymax>1274890</ymax>
+      </extent>
+      <id>swissALTI3_test20170429111621381</id>
+      <datasource>./swissALTI3-test.tif</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>swissALTI3-test</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>47</srsid>
+          <srid>2056</srid>
+          <authid>EPSG:2056</authid>
+          <description>CH1903+ / LV95</description>
+          <projectionacronym>somerc</projectionacronym>
+          <ellipsoidacronym>bessel</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Value"/>
+      </customproperties>
+      <provider>gdal</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="1"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer opacity="1" alphaBand="0" classificationMax="270" classificationMinMaxOrigin="User" band="1" classificationMin="230" type="singlebandpseudocolor">
+          <rasterTransparency/>
+          <rastershader>
+            <colorrampshader colorRampType="INTERPOLATED" clip="0">
+              <item alpha="255" value="230" label="230" color="#d7191c"/>
+              <item alpha="255" value="240" label="240" color="#fdae61"/>
+              <item alpha="255" value="250" label="250" color="#ffffbf"/>
+              <item alpha="255" value="260" label="260" color="#abdda4"/>
+              <item alpha="255" value="270" label="270" color="#2b83ba"/>
+            </colorrampshader>
+          </rastershader>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
     <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <extent>
         <xmin>2610125</xmin>
@@ -3583,7 +3794,7 @@ def my_form_open(dialog, layer, feature):
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <annotationform></annotationform>
+      <annotationform>.</annotationform>
       <aliases>
         <alias field="DN" index="0" name=""/>
       </aliases>
@@ -3593,10 +3804,10 @@ def my_form_open(dialog, layer, feature):
       <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="65">
         <columns/>
       </attributetableconfig>
-      <editform></editform>
+      <editform>.</editform>
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
+      <editforminitfilepath>.</editforminitfilepath>
       <editforminitcode><![CDATA[]]></editforminitcode>
       <featformsuppress>0</featformsuppress>
       <editorlayout>generatedlayout</editorlayout>
@@ -3617,9 +3828,9 @@ def my_form_open(dialog, layer, feature):
       <AreaUnits type="QString">m2</AreaUnits>
     </Measurement>
     <GRASS>
-      <WorkingLocation type="QString"></WorkingLocation>
-      <WorkingGisdbase type="QString"></WorkingGisdbase>
-      <WorkingMapset type="QString"></WorkingMapset>
+      <WorkingLocation type="QString">Rheintunnel</WorkingLocation>
+      <WorkingGisdbase type="QString">./grassdata</WorkingGisdbase>
+      <WorkingMapset type="QString">isohypsen</WorkingMapset>
     </GRASS>
     <SpatialRefSys>
       <ProjectCRSProj4String type="QString">+proj=longlat +datum=WGS84 +no_defs</ProjectCRSProj4String>
