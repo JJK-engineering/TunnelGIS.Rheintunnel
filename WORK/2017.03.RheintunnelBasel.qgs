@@ -54,7 +54,10 @@
     <layer-tree-layer expanded="0" providerKey="grassraster" checked="Qt::Unchecked" id="swissALTI3Dgrass20170429183543263" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata/Rheintunnel/isohypsen/cellhd/swissALTI3Dgrass" name="swissALTI3Dgrass">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="swissALTI3d20170430181105937" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissALTI3d.dxf" name="swissALTI3d entities LineString">
+    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Simplified20170430183323208" source="/home/kaelin_joseph/.qgis2//processing/outputs/SwissALT3d-simplified.shp" name="Simplified">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="swissALTI3d20170430181105937" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissALTI3d.dxf" name="swissALTI3d entities LineString">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="swissALTI3d20170430180825404" source="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/swissALTI3d" name="swissALTI3d">
@@ -139,6 +142,7 @@
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_Polygon20170428144616455"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_terrain_2_entities_LineString20170428144611705"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points_along_lines20170317182350355"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Simplified20170430183323208"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="2017_02_23_Tunnelachsen_Rheintunnel20170325110152014"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Simplified20170428145314479"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3D_test20170429114131648"/>
@@ -149,6 +153,7 @@
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="dffsadfdf20170430173855061"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="Line20170318102236894"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3d20170430180825404"/>
+      <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="memory_20170430183126489"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="test220170429182820609"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:2056" srcDatumTransform="-1" destDatumTransform="-1" layerid="tunnel_test20170319145653184"/>
       <layer_coordinate_transform destAuthId="EPSG:2056" srcAuthId="EPSG:4267" srcDatumTransform="-1" destDatumTransform="-1" layerid="swissALTI3_test20170429112659263"/>
@@ -215,6 +220,7 @@
       <item>swissALTI3d20170430175405184</item>
       <item>swissALTI3d20170430180825404</item>
       <item>swissALTI3d20170430181105937</item>
+      <item>Simplified20170430183323208</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
@@ -293,9 +299,14 @@
         <legendlayerfile isInOverview="0" layerid="swissALTI3Dgrass20170429183543263" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="swissALTI3d entities LineString" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Simplified" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="swissALTI3d20170430181105937" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="Simplified20170430183323208" visible="1"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="swissALTI3d entities LineString" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="swissALTI3d20170430181105937" visible="0"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="swissALTI3d" showFeatureCount="0">
@@ -3046,6 +3057,116 @@ def my_form_open(dialog, layer, feature):
       </defaults>
       <previewExpression></previewExpression>
     </maplayer>
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Line" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+      <id>Simplified20170430183323208</id>
+      <datasource>../../.qgis2/processing/outputs/SwissALT3d-simplified.shp</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>Simplified</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
+          <srsid>47</srsid>
+          <srid>2056</srid>
+          <authid>EPSG:2056</authid>
+          <description>CH1903+ / LV95</description>
+          <projectionacronym>somerc</projectionacronym>
+          <ellipsoidacronym>bessel</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <provider encoding="UTF-8">ogr</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <edittypes>
+        <edittype widgetv2type="TextEdit" name="ID">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+      </edittypes>
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
+        <symbols>
+          <symbol alpha="1" clip_to_extent="1" type="line" name="0">
+            <layer pass="0" class="SimpleLine" locked="0">
+              <prop k="capstyle" v="square"/>
+              <prop k="customdash" v="5;2"/>
+              <prop k="customdash_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="customdash_unit" v="MM"/>
+              <prop k="draw_inside_polygon" v="0"/>
+              <prop k="joinstyle" v="bevel"/>
+              <prop k="line_color" v="108,196,196,255"/>
+              <prop k="line_style" v="solid"/>
+              <prop k="line_width" v="0.26"/>
+              <prop k="line_width_unit" v="MM"/>
+              <prop k="offset" v="0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="offset_unit" v="MM"/>
+              <prop k="use_custom_dash" v="0"/>
+              <prop k="width_map_unit_scale" v="0,0,0,0,0,0"/>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale scalemethod="diameter"/>
+      </renderer-v2>
+      <labeling type="simple"/>
+      <customproperties/>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerTransparency>0</layerTransparency>
+      <displayfield>ID</displayfield>
+      <label>0</label>
+      <labelattributes>
+        <label fieldname="" text="Label"/>
+        <family fieldname="" name="Sans Serif"/>
+        <size fieldname="" units="pt" value="12"/>
+        <bold fieldname="" on="0"/>
+        <italic fieldname="" on="0"/>
+        <underline fieldname="" on="0"/>
+        <strikeout fieldname="" on="0"/>
+        <color fieldname="" red="0" blue="0" green="0"/>
+        <x fieldname=""/>
+        <y fieldname=""/>
+        <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+        <angle fieldname="" value="0" auto="0"/>
+        <alignment fieldname="" value="center"/>
+        <buffercolor fieldname="" red="255" blue="255" green="255"/>
+        <buffersize fieldname="" units="pt" value="1"/>
+        <bufferenabled fieldname="" on=""/>
+        <multilineenabled fieldname="" on=""/>
+        <selectedonly on=""/>
+      </labelattributes>
+      <annotationform></annotationform>
+      <aliases>
+        <alias field="ID" index="0" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <attributeactions default="-1"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="1869593424">
+        <columns/>
+      </attributetableconfig>
+      <editform></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="ID" expression=""/>
+      </defaults>
+      <previewExpression></previewExpression>
+    </maplayer>
     <maplayer minimumScale="inf" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
       <extent>
         <xmin>7.43196000000000012</xmin>
@@ -5258,8 +5379,14 @@ def my_form_open(dialog, layer, feature):
         <value>swissALTI3D20170416123730212</value>
         <value>swissALTI3D_shp20170416123547087</value>
         <value>test_terrain20170428143811452</value>
+        <value>swissALTI3d20170430175405184</value>
+        <value>swissALTI3d20170430180825404</value>
+        <value>swissALTI3d20170430181105937</value>
       </LayerSnappingList>
       <LayerSnappingEnabledList type="QStringList">
+        <value>disabled</value>
+        <value>disabled</value>
+        <value>disabled</value>
         <value>disabled</value>
         <value>disabled</value>
         <value>disabled</value>
@@ -5282,8 +5409,14 @@ def my_form_open(dialog, layer, feature):
         <value>2</value>
         <value>2</value>
         <value>2</value>
+        <value>2</value>
+        <value>2</value>
+        <value>2</value>
       </LayerSnappingToleranceUnitList>
       <LayerSnapToList type="QStringList">
+        <value>to_vertex_and_segment</value>
+        <value>to_vertex_and_segment</value>
+        <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
@@ -5297,6 +5430,9 @@ def my_form_open(dialog, layer, feature):
       <DefaultSnapType type="QString">off</DefaultSnapType>
       <DefaultSnapTolerance type="double">0</DefaultSnapTolerance>
       <LayerSnappingToleranceList type="QStringList">
+        <value>0.000000</value>
+        <value>0.000000</value>
+        <value>0.000000</value>
         <value>0.000000</value>
         <value>0.000000</value>
         <value>0.000000</value>
