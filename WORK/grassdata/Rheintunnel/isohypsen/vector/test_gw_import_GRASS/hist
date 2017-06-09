@@ -1,0 +1,7 @@
+COMMAND: v.in.dxf -e input="/home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/2017.05.31.GrundwasserIsohypsen.Rheintunnel.exploded.dxf" output="test_gw_import_GRASS"
+GISDBASE: /home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Fri Jun  9 05:58:49 2017
+---------------------------------------------------------------------------------
+COMMAND: QGIS --quiet
+GISDBASE: /home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Fri Jun  9 05:58:51 2017

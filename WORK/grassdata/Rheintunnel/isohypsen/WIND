@@ -6,8 +6,8 @@ east:       2624270
 west:       2603510
 cols:       999
 rows:       685
-e-w resol:  20.76
-n-s resol:  20.76
+e-w resol:  20.78078078
+n-s resol:  20.78832117
 top:        1.000000000000000
 bottom:     0.000000000000000
 cols3:      10000
