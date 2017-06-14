@@ -1,0 +1,584 @@
+<?xml version="1.0"?>
+<LandXML xmlns="http://www.landxml.org/schema/LandXML-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landxml.org/schema/LandXML-1.2 http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd" date="2017-06-14" time="09:07:36" version="1.2" language="English" readOnly="false">
+	<Units>
+		<Metric areaUnit="squareMeter" linearUnit="meter" volumeUnit="cubicMeter" temperatureUnit="celsius" pressureUnit="milliBars" diameterUnit="millimeter" angularUnit="decimal degrees" directionUnit="decimal degrees"></Metric>
+	</Units>
+	<Project name="C:\Users\fbg579\Desktop\Rheintunnel-neu.dwg"></Project>
+	<Application name="AutoCAD Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2014" manufacturerURL="www.autodesk.com/civil" timeStamp="2017-06-14T09:07:36"></Application>
+	<Alignments name="">
+		<Alignment name="Achse_Oströhre" length="4679.815376981302" staStart="0." desc="">
+			<CoordGeom>
+				<Line dir="166.654819862395" length="5.708689997612">
+					<Start>1265600.10794493882 2614663.858308161143</Start>
+					<End>1265601.425607969984 2614658.303768970072</End>
+				</Line>
+				<Line dir="166.314186894636" length="13.524331024171">
+					<Start>1265601.425607969984 2614658.303768970072</Start>
+					<End>1265604.625431899913 2614645.1634243601</End>
+				</Line>
+				<Line dir="165.973553900741" length="13.524331033381">
+					<Start>1265604.625431899913 2614645.1634243601</Start>
+					<End>1265607.903320370009 2614632.042335339822</End>
+				</Line>
+				<Line dir="165.632920986061" length="13.524331020034">
+					<Start>1265607.903320370009 2614632.042335339822</Start>
+					<End>1265611.259157499997 2614618.940965690184</End>
+				</Line>
+				<Line dir="165.29224177594" length="13.527989034394">
+					<Start>1265611.259157499997 2614618.940965690184</Start>
+					<End>1265614.693763980409 2614605.856243085582</End>
+				</Line>
+				<Spiral length="46.86939819895" radiusEnd="120.000077666984" radiusStart="INF" rot="cw" spiType="clothoid" theta="11.189237362705" totalY="3.042725169384" totalX="46.690963925547" tanLong="31.308914730377" tanShort="15.68010248369">
+					<Start>1265614.693763980409 2614605.856243085582</Start>
+					<PI>1265622.732937036315 2614575.597032286692</PI>
+					<End>1265629.623288222123 2614561.511980833486</End>
+				</Spiral>
+				<Curve rot="cw" chord="141.312831912509" crvType="arc" delta="72.144234853624" dirEnd="81.788068620369" dirStart="153.932303473993" external="28.464062071835" length="151.098629937009" midOrd="23.006832931794" radius="120.000077666147" tangent="87.416143521994">
+					<Start>1265629.623288222123 2614561.511980833486</Start>
+					<Center>1265737.416414578911 2614614.243949790485</Center>
+					<End>1265754.556630886858 2614495.474291944876</End>
+					<PI>1265668.036808081437 2614482.988203286193</PI>
+				</Curve>
+				<Spiral length="46.87367363811" radiusEnd="INF" radiusStart="120.000077666505" rot="cw" spiType="clothoid" theta="11.190258048004" totalY="3.043278798136" totalX="46.69519058728" tanLong="31.311782211274" tanShort="15.681543262899">
+					<Start>1265754.556630886858 2614495.474291944876</Start>
+					<PI>1265770.077383573167 2614497.714165857993</PI>
+					<End>1265799.610968560679 2614508.115851445124</End>
+				</Spiral>
+				<Line dir="70.59781057193" length="79.269338040546">
+					<Start>1265799.610968560679 2614508.115851445124</Start>
+					<End>1265874.378598077921 2614534.4489015867</End>
+				</Line>
+				<Curve rot="ccw" chord="71.39830328476" crvType="arc" delta="2.153190619155" dirEnd="72.751001189428" dirStart="70.597810570273" external="0.335464989166" length="71.402504880193" midOrd="0.335405769749" radius="1899.999999954978" tangent="35.70545470318">
+					<Start>1265874.378598077921 2614534.448901587166</Start>
+					<Center>1266505.553230144782 2612742.349969143979</Center>
+					<End>1265942.155945119914 2614556.897708680015</End>
+					<PI>1265908.056338739581 2614546.310152763966</PI>
+				</Curve>
+				<Line dir="72.751001190568" length="22.307587764421">
+					<Start>1265942.155945119914 2614556.897708680015</Start>
+					<End>1265963.46025193762 2614563.512463617604</End>
+				</Line>
+				<Curve rot="cw" chord="71.391120121737" crvType="arc" delta="2.152973967663" dirEnd="70.598027225846" dirStart="72.751001193508" external="0.335397474473" length="71.395320449034" midOrd="0.335338278887" radius="1900.000000071791" tangent="35.701861219128">
+					<Start>1265963.46025193762 2614563.512463617139</Start>
+					<Center>1265400.062967007514 2616378.06020330498</Center>
+					<End>1266031.230822549667 2614585.958884070162</End>
+					<PI>1265997.556426450843 2614574.098953973502</PI>
+				</Curve>
+				<Line dir="70.598027223048" length="22.579563034597">
+					<Start>1266031.2308225499 2614585.958884070162</Start>
+					<End>1266052.528119760333 2614593.459670586511</End>
+				</Line>
+				<Spiral length="200.191571899556" radiusEnd="1174.999848714069" radiusStart="INF" rot="ccw" spiType="clothoid" theta="4.880907932238" totalY="5.681688147897" totalX="200.046342063975" tanLong="133.51181542533" tanShort="66.776678677802">
+					<Start>1266052.528119760333 2614593.459670586511</Start>
+					<PI>1266178.457962149987 2614637.811442293692</PI>
+					<End>1266243.101494720206 2614654.554754756857</End>
+				</Spiral>
+				<Curve rot="ccw" chord="147.401601541675" crvType="arc" delta="7.192373142591" dirEnd="82.671308296878" dirStart="75.478935154287" external="2.318250760164" length="147.498427043945" midOrd="2.313685905016" radius="1174.999848713613" tangent="73.846210949059">
+					<Start>1266243.101494720206 2614654.554754756857</Start>
+					<Center>1266537.716171587817 2613517.089662258979</Center>
+					<End>1266387.831665313803 2614682.490571498405</End>
+					<PI>1266314.58872704627 2614673.070652951021</PI>
+				</Curve>
+				<Spiral length="78.463310806882" radiusEnd="2400.000403466379" radiusStart="1174.999848713613" rot="ccw" spiType="clothoid" theta="2.849615192972" totalY="1.728000868812" totalX="78.43612865315" tanLong="43.720736452687" tanShort="34.758372266759">
+					<Start>1266387.831665313803 2614682.49057149794</Start>
+					<PI>1266422.306085621705 2614686.924394593574</PI>
+					<End>1266465.893295412185 2614690.338766925503</End>
+				</Spiral>
+				<Curve rot="ccw" chord="46.028192343571" crvType="arc" delta="1.098858806205" dirEnd="86.619782296055" dirStart="85.52092348985" external="0.110351054872" length="46.02889777671" midOrd="0.110345981208" radius="2400.000403466483" tangent="23.015154350687">
+					<Start>1266465.893295412185 2614690.338766925503</Start>
+					<Center>1266653.321404813323 2612297.668158495333</Center>
+					<End>1266511.813273241743 2614693.493149043992</End>
+					<PI>1266488.838159613078 2614692.136136150919</PI>
+				</Curve>
+				<Spiral length="60.666827345892" radiusEnd="840.000008235486" radiusStart="2400.000403466483" rot="ccw" spiType="clothoid" theta="2.793176507112" totalY="1.241205348686" totalX="60.648027475786" tanLong="35.207643913509" tanShort="25.4706440145">
+					<Start>1266511.813273241743 2614693.493149043992</Start>
+					<PI>1266546.959664481459 2614695.56905198982</PI>
+					<End>1266572.428971594665 2614695.830014592502</End>
+				</Spiral>
+				<Curve rot="ccw" chord="633.368721612536" crvType="arc" delta="44.296600033344" dirEnd="133.709558836504" dirStart="89.412958803161" external="66.920634165415" length="649.422081504556" midOrd="61.982637313512" radius="840.000008235471" tangent="341.913787053468">
+					<Start>1266572.428971594665 2614695.830014592502</Start>
+					<Center>1266581.035294553265 2613855.874096082058</Center>
+					<End>1267161.477833988145 2614463.069675981998</End>
+					<PI>1266914.324812356848 2614699.333134171553</PI>
+				</Curve>
+				<Spiral length="16.470930980274" radiusEnd="1020.000009537928" radiusStart="840.000008235471" rot="ccw" spiType="clothoid" theta="1.024340316653" totalY="0.142481364361" totalX="16.470095202438" tanLong="8.501346028618" tanShort="7.970022856583">
+					<Start>1267161.477833987679 2614463.069675981533</Start>
+					<PI>1267167.238979942165 2614457.562366148457</PI>
+					<End>1267173.278193209553 2614451.578990225215</End>
+				</Spiral>
+				<Curve rot="ccw" chord="242.622140847467" crvType="arc" delta="13.660987141341" dirEnd="148.394886294496" dirStart="134.733899153155" external="7.29135318004" length="243.197791056914" midOrd="7.239601716798" radius="1020.000009537951" tangent="122.178248708868">
+					<Start>1267173.278193209553 2614451.578990225215</Start>
+					<Center>1266455.386758499313 2613726.988135033753</Center>
+					<End>1267324.100534398109 2614261.531299821567</End>
+					<PI>1267260.071566630853 2614365.588090778794</PI>
+				</Curve>
+				<Spiral length="156.86273796382" radiusEnd="INF" radiusStart="1020.000009537951" rot="ccw" spiType="clothoid" theta="4.405672923604" totalY="4.018877203621" totalX="156.770016527587" tanLong="104.607564763968" tanShort="52.317040703481">
+					<Start>1267324.100534398342 2614261.531299821567</Start>
+					<PI>1267351.517903267639 2614216.973913992755</PI>
+					<End>1267399.332896189531 2614123.933766430244</End>
+				</Spiral>
+				<Line dir="152.800559218117" length="897.776773596934">
+					<Start>1267399.332896189531 2614123.933766430244</Start>
+					<End>1267809.697004850721 2613325.432399159763</End>
+				</Line>
+				<Spiral length="147.590367346812" radiusEnd="829.999994511377" radiusStart="INF" rot="cw" spiType="clothoid" theta="5.094159760047" totalY="4.371610493896" totalX="147.473740393199" tanLong="98.434350866957" tanShort="49.233857287611">
+					<Start>1267809.697004850721 2613325.432399159763</Start>
+					<PI>1267854.690288083861 2613237.882836658508</PI>
+					<End>1267880.99386712932 2613196.264398040716</End>
+				</Spiral>
+				<Curve rot="cw" chord="328.542378473605" crvType="arc" delta="22.830365766853" dirEnd="124.876033691205" dirStart="147.706399458058" external="16.749757759587" length="330.725991027865" midOrd="16.418426827098" radius="829.999994511255" tangent="167.586252664262">
+					<Start>1267880.99386712932 2613196.264398040716</Start>
+					<Center>1268582.6107163087 2613639.698483149521</Center>
+					<End>1268108.014427605085 2612958.773851756472</End>
+					<PI>1267970.528152814368 2613054.600133778062</PI>
+				</Curve>
+				<Spiral length="147.590369471679" radiusEnd="INF" radiusStart="829.999994511255" rot="cw" spiType="clothoid" theta="5.094159833388" totalY="4.371610619702" totalX="147.47374251303" tanLong="98.434352285297" tanShort="49.233857997501">
+					<Start>1268108.014427605085 2612958.773851756472</Start>
+					<PI>1268148.405447883299 2612930.621795806102</PI>
+					<End>1268233.838850101223 2612881.729511187412</End>
+				</Spiral>
+				<Line dir="119.781873857747" length="916.849801634734">
+					<Start>1268233.838850101223 2612881.729511187412</Start>
+					<End>1269029.593544049887 2612426.330756450072</End>
+				</Line>
+				<Curve rot="cw" chord="68.873264957046" crvType="arc" delta="0.789235719506" dirEnd="118.992638134165" dirStart="119.781873853671" external="0.118592384632" length="68.873809472276" midOrd="0.118589571868" radius="5000.00000534395" tangent="34.437449262995">
+					<Start>1269029.593544049887 2612426.330756450072</Start>
+					<Center>1271513.090592069551 2616765.943926528562</Center>
+					<End>1269089.60440242989 2612392.533959229942</End>
+					<PI>1269059.482585691148 2612409.225695751142</PI>
+				</Curve>
+			</CoordGeom>
+			<CrossSects>
+				<CrossSect sta="0." name="0.000">
+					<CrossSectSurf name="4    - (52)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.233300955076 0.000000000088 247.340696796587 15.000000000176 247.448092638098</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="4    - (52)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 264.049963041291 -6.252129137364 264.000000000001 0.000000000088 263.799774119205 15.000000000176 263.319395651973</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="100." name="100.000">
+					<CrossSectSurf name="5    - (53)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.185901338353 -0.000000000146 247.293633734327 14.999999999707 247.4013661303</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="5    - (53)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 263.558413421302 -10.818322106035 263.486396887793 -0.000000000146 263.042832406196 1.044661567572 262.999999999997 14.999999999707 262.460075409512</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="200." name="200.000">
+					<CrossSectSurf name="6    - (54)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.548852134961 -0.000000000043 247.616288403502 14.999999999913 247.683724672043</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="6    - (54)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 257.882637420508 -0.000000000043 257.903136321277 3.234141542056 257.90755607771 6.155953631861 257.901963232662 14.999999999913 257.875052644342</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="300." name="300.000">
+					<CrossSectSurf name="7    - (55)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 248.292744769551 0.000000000092 248.292713122438 15.000000000184 248.292681475325</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="7    - (55)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 253.284879464084 -2.534884925502 253.700421743572 0.000000000092 253.747836113382 13.48128083348 253.999999999997 15.000000000184 254.038642004051</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="400." name="400.000">
+					<CrossSectSurf name="8    - (56)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 249.01186083189 0.000000000181 249.012535284093 15.000000000361 249.013209736296</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="8    - (56)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 254.173965193596 -13.079261919632 254.153705699509 -2.579329562372 254.043590980058 -1.957076929869 254.032712873302 -0.172654040398 254.000000000004 0.000000000181 253.99797673118 13.434774408294 253.840539580647 15.000000000361 253.798623561401</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="500." name="500.000">
+					<CrossSectSurf name="9    - (57)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 249.729541007095 0.000000000047 249.732087945999 15.000000000094 249.734634884903</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="9    - (57)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 256.625304776736 -14.43072822651 256.608661423591 0.000000000047 256.086203739586 2.381021040161 255.999999999992 15.000000000094 255.508187854965</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="600." name="600.000">
+					<CrossSectSurf name="10    - (58)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 250.451935338621 -0.000000000075 250.451881486584 14.99999999985 250.451827634546</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="10    - (58)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 256.266178301827 -14.373591357846 256.267111539189 -10.21139436002 256.227841059685 -0.000000000075 256.0921468041 3.630893548893 256.043897624813 11.453177855913 256.056161898422 14.99999999985 256.058761006965</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="700." name="700.000">
+					<CrossSectSurf name="11    - (59)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 251.168070135948 -0.000000000009 251.171614123576 14.999999999983 251.175158111205</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="11    - (59)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 250.309355253288 -0.87748598556 249.999999999999 -0.433736791553 249.992129621569 -0.000000000009 249.981106490769 0.179407476834 249.976546969593 14.999999999983 249.759081097436</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="800." name="800.000">
+					<CrossSectSurf name="12    - (60)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 251.878123182483 0.000000000009 251.889651938294 15.000000000018 251.901180694106</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="12    - (60)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 245.380052625536 -7.189194975558 245.255359344891 0.000000000009 245.088016921485 3.781293451003 245.000000000001 15.000000000018 244.83305663086</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="900." name="900.000">
+					<CrossSectSurf name="13    - (61)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 252.58061614339 0.000000000215 252.601228861087 15.00000000043 252.621841578784</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="13    - (61)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 243.785646720065 0.000000000215 243.723987560983 2.934134814497 243.711926475298 15.00000000043 243.665839566088</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1000." name="1000.000">
+					<CrossSectSurf name="14    - (62)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 253.274325132729 -0.000000000007 253.301996950261 14.999999999986 253.329668767793</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="14    - (62)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 243.078057021891 -0.000000000007 243.023204770877 6.345620402389 243. 8.094583143468 242.989962518306 14.999999999986 242.960171802034</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1100." name="1100.000">
+					<CrossSectSurf name="15    - (63)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 253.958863665479 -0.000000000028 253.992930348832 14.999999999945 254.026997032186</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="15    - (63)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.268685035223 -0.000000000028 242.138856975587 14.999999999945 242.009028915951</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1200." name="1200.000">
+					<CrossSectSurf name="16    - (64)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 254.614924382368 0.000000000115 254.660906246926 15.00000000023 254.706888111485</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="16    - (64)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.000958375627 -14.904465677577 242.000000000001 -1.645536198131 241.895885719003 0.000000000115 241.884465691354 15.00000000023 241.78036563271</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1300." name="1300.000">
+					<CrossSectSurf name="17    - (65)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 255.235172998017 -0.000000000241 255.292432110017 14.999999999519 255.349691222018</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="17    - (65)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.058114607113 -8.785601400448 242.017431844983 -4.201498528205 242.018093408129 -0.000000000241 242.017441825984 8.373944184074 242.01614316731 14.245248548724 242.016194410753 14.999999999519 242.016374760856</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1400." name="1400.000">
+					<CrossSectSurf name="18    - (66)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 255.810842056787 0.000000000079 255.878567878844 15.000000000158 255.946293700901</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="18    - (66)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.042264930642 -14.552456786804 242.04242451124 0.000000000079 242.11661498136 15.000000000158 242.193087089685</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1500." name="1500.000">
+					<CrossSectSurf name="19    - (67)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 256.333782614701 -0.000000000041 256.411016446807 14.999999999918 256.488250278913</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="19    - (67)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.131165493388 -0.000000000041 242.200264525567 14.999999999918 242.269363557746</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1600." name="1600.000">
+					<CrossSectSurf name="20    - (68)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 256.796592131633 -0.000000000147 256.882240682144 14.999999999707 256.967889232655</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="20    - (68)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 241.016638100595 -7.390969945262 241.146135604447 -0.367331875369 241.294052078071 -0.000000000147 241.302686614248 14.999999999707 241.655277966659</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1700." name="1700.000">
+					<CrossSectSurf name="21    - (69)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 257.192719258722 -0.00000000011 257.285570120563 14.999999999781 257.378420982403</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="21    - (69)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.751000944298 -4.60468997245 240.000000000002 -0.00000000011 240.089736648285 14.999999999781 240.382058114514</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1800." name="1800.000">
+					<CrossSectSurf name="22    - (70)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 257.517907359086 0.000000000122 257.616295280433 15.000000000243 257.71468320178</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="22    - (70)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240.152072505945 0.000000000122 240.368825085817 15.000000000243 240.585577665688</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="1900." name="1900.000">
+					<CrossSectSurf name="23    - (71)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 253.386861730338 -0.000000000085 253.553682900147 14.999999999829 253.720504069956</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="23    - (71)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240.503633528922 -0.000000000085 240.65134525081 14.999999999829 240.799056972697</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2000." name="2000.000">
+					<CrossSectSurf name="24    - (72)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 252.324499799348 -0.809752608408 252.353115906674 -0.000000000075 252.355300523056 14.99999999985 252.395768741875</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="24    - (72)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240.607386276724 -3.56465979321 240.678814529643 -0.000000000075 240.697682539268 14.99999999985 240.777078655813</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2100." name="2100.000">
+					<CrossSectSurf name="25    - (73)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 252.308517299557 0.000000000005 252.352527711599 15.000000000009 252.396538123641</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="25    - (73)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240.275261816648 -14.961375253672 240.275454904115 -3.364211633926 240.32622559436 0.000000000005 240.332941033782 15.000000000009 240.362883142749</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2200." name="2200.000">
+					<CrossSectSurf name="26    - (74)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 252.502874867606 0.000000000045 252.551304067063 15.00000000009 252.599733266521</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="26    - (74)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240. 0.000000000045 240. 15.00000000009 240.</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2300." name="2300.000">
+					<CrossSectSurf name="27    - (75)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 252.773415724977 0.000000000045 252.822176295863 15.00000000009 252.870936866749</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="27    - (75)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 240.336101033164 0.000000000045 240.385458458794 5.521908447201 240.403628271164 15.00000000009 240.370467834923</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2400." name="2400.000">
+					<CrossSectSurf name="28    - (76)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.797197876743 0.000000000045 247.763761425495 15.00000000009 247.730324974247</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="28    - (76)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 241.357062766429 -5.873197702374 241.367841731344 0.000000000045 241.355756020996 15.00000000009 241.324889419117</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2500." name="2500.000">
+					<CrossSectSurf name="29    - (77)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.559365088356 0.000000000045 247.527458464006 15.00000000009 247.495551839656</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="29    - (77)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 242.011501511826 0.000000000045 242.111063808667 3.341018328539 242.133239772571 6.162634510042 242.146919205307 15.00000000009 242.157160851029</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2600." name="2600.000">
+					<CrossSectSurf name="30    - (78)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 247.08930110775 0.000000000045 247.054691432517 0.563464366497 247.053391344601 15.00000000009 247.019544790411</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="30    - (78)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 241.546409063355 -9.348940235359 241.676422463245 -1.30278633547 241.717796264964 0.000000000045 241.727229596 4.111946981073 241.757003747022 15.00000000009 241.735427173115</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2700." name="2700.000">
+					<CrossSectSurf name="31    - (79)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 246.779776851118 0.000000000045 246.771465504384 2.579052840414 246.770036477558 15.00000000009 246.770255872586</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="31    - (79)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.288482882645 -4.459802690782 239.242591918674 0.000000000045 239.185911439801 3.617264991954 239.139938932458 6.547740817725 239.157952749195 14.929329591961 239.064406806258 15.00000000009 239.063889993888</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2800." name="2800.000">
+					<CrossSectSurf name="32    - (80)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 246.703181526052 -8.59670558007 246.710194327414 -2.867914676102 246.730736306578 -1.575478360459 246.734835380519 0.000000000045 246.739762387505 2.652703440618 246.748058209722 15.00000000009 246.786937482831</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="32    - (80)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.097899443661 -6.546462329437 239.000000000002 0.000000000045 238.896571187538 15.00000000009 238.659583313954</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="2900." name="2900.000">
+					<CrossSectSurf name="33    - (81)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 259.445210515638 -11.046173350849 259.29944300125 0.000000000045 259.581961015954 15.00000000009 259.965602489438</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="33    - (81)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.212426295452 0.000000000045 239.047618206804 4.333968726519 238.999999999999 15.00000000009 238.860251871892</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3000." name="3000.000">
+					<CrossSectSurf name="34    - (82)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 259.636765647883 -7.214258073867 259.60696765489 0.000000000045 259.635756529598 15.00000000009 259.695614815261</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="34    - (82)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.15971804652 0.000000000045 239.037524719782 4.606395551922 238.999999999999 15.00000000009 238.997846320718</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3100." name="3100.000">
+					<CrossSectSurf name="35    - (83)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 259.887416046559 -12.647991252473 259.799838129013 -0.000000000064 259.796727458344 8.571660587783 259.794619328077 14.999999999872 259.791277092475</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="35    - (83)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.186711629633 -0.000000000064 239.087312742143 13.176114594568 239. 14.999999999872 238.999597644781</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3200." name="3200.000">
+					<CrossSectSurf name="36    - (84)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 259.190500289792 0.000000000198 258.677747913703 14.788500187568 258.172225339721 15.000000000395 258.395243606965</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="36    - (84)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.376754170308 0.000000000198 239.278904915501 15.000000000395 239.181055660695</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3300." name="3300.000">
+					<CrossSectSurf name="37    - (85)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 261.655178268894 0.000000000027 262.398971817589 0.625741829756 262.429999999996 15.000000000053 261.46852111613</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="37    - (85)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.527978967895 0.000000000027 239.430048614381 15.000000000053 239.332118260867</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3400." name="3400.000">
+					<CrossSectSurf name="38    - (86)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.459606620948 -3.38863937394 262.600183120296 0.000000000032 262.64122210844 5.908383607172 262.712777106788 6.452733925353 262.719352611431 9.320021984354 262.738030351919 15.000000000065 262.775044904713</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="38    - (86)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.319928417064 -9.962314880617 239.297258378693 0.000000000032 239.25326344878 15.000000000065 239.187021420034</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3500." name="3500.000">
+					<CrossSectSurf name="39    - (87)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.807674979859 -0.000000000074 262.802477266223 14.999999999853 262.797279552587</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="39    - (87)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.351682989539 -9.022826047118 239.314609306653 -0.000000000074 239.265618960643 0.665042648397 239.262008044364 7.746702841488 239.264909670402 14.999999999853 239.269461516503</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3600." name="3600.000">
+					<CrossSectSurf name="40    - (88)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 261.006022290253 -0.000000000065 261.632522025909 14.99999999987 262.259021761565</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="40    - (88)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.885105199036 -0.000000000065 239.884331678248 14.99999999987 239.88355815746</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3700." name="3700.000">
+					<CrossSectSurf name="41    - (89)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.667343052417 -0.000000000019 262.547298157528 14.999999999963 262.427253262638</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="41    - (89)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.553095734853 -0.000000000019 239.520603729728 14.999999999963 239.488111724602</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3800." name="3800.000">
+					<CrossSectSurf name="42    - (90)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 263.083449563054 -0.000000000019 263.014465627214 7.59496602913 262.979536917262 14.999999999963 262.981891295516</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="42    - (90)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.034987310623 -1.801414504221 239.039053939677 -0.000000000019 239.039504888443 14.999999999963 239.043259844052</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="3900." name="3900.000">
+					<CrossSectSurf name="43    - (91)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 260.288748884061 -13.516460236091 260.137423301879 -12.886670327753 259.901474715185 -11.591667314336 263.20489599663 -0.000000000019 263.099893596544 14.999999999963 262.96401702534</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="43    - (91)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.02142680352 -9.260483123215 239.023085556963 -0.000000000019 239.025500911785 14.999999999963 239.029413269471</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4000." name="4000.000">
+					<CrossSectSurf name="44    - (92)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.012695247058 -6.561544184179 262.954599526278 -0.000000000019 262.952475848013 14.999999999963 262.947621019191</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="44    - (92)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 239.007097058192 -0.000000000019 239.007496191336 1.979325242674 239.007548858956 14.999999999963 239.008738940818</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4100." name="4100.000">
+					<CrossSectSurf name="45    - (93)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 261.712592870721 -3.669776455589 262.977277580096 -0.000000000019 262.976089837658 14.999999999963 262.971235008836</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="45    - (93)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 238.531468051181 -0.000000000019 238.567328306549 0.490613816893 238.568501209 4.76868623646 238.577799270099 14.999999999963 238.607712090866</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4200." name="4200.000">
+					<CrossSectSurf name="46    - (94)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 256.702919744294 -13.366026409374 256.683220828756 -13.317518321609 262.325455102122 -13.289175354829 262.997754677429 -11.742564008804 262.997774825655 -0.000000000019 259.942855091167 10.557791912583 257.196163070427 14.999999999963 261.247396384705</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="46    - (94)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 237.987683210777 -2.69350181126 238. -0.000000000019 238.014257214121 4.973090679978 238.040580722935 9.030008883968 238.058124562587 11.758052125966 238.074002338274 14.999999999963 238.094184060739</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4300." name="4300.000">
+					<CrossSectSurf name="47    - (95)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 263.915227558193 -1.026643574265 263.640099509921 -0.000000000019 263.64034009099 1.078233980391 263.640592761626 6.303227478825 263.641815857559 7.996784099341 263.642212820503 14.999999999963 263.551574042041</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="47    - (95)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 237.787776852592 -0.000000000019 237.783336785706 5.556953465186 237.781691902701 14.999999999963 237.851837697846</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4400." name="4400.000">
+					<CrossSectSurf name="48    - (96)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 260.211349590899 -0.000000000019 261.658382207072 14.999999999963 263.105414823245</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="48    - (96)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 237.232507839363 -5.074839503333 237.296718567793 -0.000000000019 237.341378512085 14.999999999963 237.473382522051</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4500." name="4500.000">
+					<CrossSectSurf name="49    - (97)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.370165200765 -2.794214738736 262.395814675083 -0.000000000019 262.401766596849 6.565481524752 262.415751646691 14.999999999963 262.433430070715</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="49    - (97)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 236.804429726857 -0.000000000019 236.973813065245 2.319023967229 237.000000000003 14.999999999963 237.122170848105</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4573.136306673024" name="4573.136">
+					<CrossSectSurf name="49    - (49)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.352610239842 -0.000000000019 262.384472416924 6.47976909018 262.398236386937 14.999999999963 262.435124548004</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="49    - (49)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 236.865452882653 -0.000000000019 236.91902827761 14.999999999963 236.972603672566</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+				<CrossSect sta="4600." name="4600.000">
+					<CrossSectSurf name="2    - (50)-DGM_BS_Terrain" desc="">
+						<PntList2D>-15. 262.400451519244 -0.000000000019 262.465393704715 2.711225824283 262.47713190007 14.999999999963 262.509785612795</PntList2D>
+					</CrossSectSurf>
+					<CrossSectSurf name="2    - (50)-DGM_Best_Fels" desc="">
+						<PntList2D>-15. 236.875595050937 -0.000000000019 236.913405054518 4.273955440929 236.924178272553 14.999999999963 236.951748117703</PntList2D>
+					</CrossSectSurf>
+				</CrossSect>
+			</CrossSects>
+			<Superelevation staStart="106.679070308542" staEnd="257.777700245551">
+				<FullSuperSta>106.679</FullSuperSta>
+				<FullSuperelev>7.</FullSuperelev>
+				<RunoffSta>257.778</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="383.920711924208" staEnd="455.323216804401">
+				<FullSuperSta>383.921</FullSuperSta>
+				<FullSuperelev>3.</FullSuperelev>
+				<RunoffSta>455.323</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="477.630804568822" staEnd="549.026125017856">
+				<FullSuperSta>477.631</FullSuperSta>
+				<FullSuperelev>3.</FullSuperelev>
+				<RunoffSta>549.026</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="771.79725995201" staEnd="919.295686995954">
+				<FullSuperSta>771.797</FullSuperSta>
+				<FullSuperelev>-5.</FullSuperelev>
+				<RunoffSta>919.296</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="997.758997802836" staEnd="1043.787895579547">
+				<FullSuperSta>997.759</FullSuperSta>
+				<FullSuperelev>-5.</FullSuperelev>
+				<RunoffSta>1043.788</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="1104.454722925439" staEnd="1753.876804429995">
+				<FullSuperSta>1104.455</FullSuperSta>
+				<FullSuperelev>-5.</FullSuperelev>
+				<RunoffSta>1753.877</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="1770.347735410269" staEnd="2013.545526467182">
+				<FullSuperSta>1770.348</FullSuperSta>
+				<FullSuperelev>-5.</FullSuperelev>
+				<RunoffSta>2013.546</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="3215.775405374748" staEnd="3546.501396402613">
+				<FullSuperSta>3215.775</FullSuperSta>
+				<FullSuperelev>5.</FullSuperelev>
+				<RunoffSta>3546.501</RunoffSta>
+			</Superelevation>
+			<Superelevation staStart="4610.941567509026" staEnd="4679.815376981302">
+				<FullSuperSta>4610.</FullSuperSta>
+				<FullSuperelev>3.</FullSuperelev>
+				<RunoffSta>4679.815</RunoffSta>
+			</Superelevation>
+		</Alignment>
+	</Alignments>
+</LandXML>
