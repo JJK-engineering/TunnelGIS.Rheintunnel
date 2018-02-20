@@ -1,0 +1,3 @@
+COMMAND: v.in.ogr -o input="/home/kaelin_joseph/KK/KernelDensity/Data_in/Point.shp" output="point" min_area=0.0001 snap=-1
+GISDBASE: /home/kaelin_joseph/TunnelGIS.Rheintunnel/WORK/grassdata
+LOCATION: Rheintunnel MAPSET: isohypsen USER: kaelin_joseph DATE: Mon Aug 21 19:55:11 2017
