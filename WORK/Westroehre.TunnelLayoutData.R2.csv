@@ -1,0 +1,7 @@
+WBScode,WorkType,ExcavationType,ProfileType,SectionArea,Station,Description
+2,NaN,NaN,NaN,NaN,103+767.802,"highway"
+211a,UEX,MUL,MUL1,120.0,104+583,"conventional excavation"
+211b,UEX,TBM,TBM1,132.7,104+604,"TBM section"
+211c,UEX,MUL,MUL1,120.0,108+627,"conventional excavation"
+2,NaN,NaN,NaN,NaN,108+648,"highway"
+2,NaN,NaN,NaN,NaN,109+724.056,"highway"
